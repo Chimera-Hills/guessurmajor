@@ -1,6 +1,6 @@
 /*
 master.js - 
-Author(s): Kevin Hong, add name here
+Author(s): Kevin Hong, add your name here...
 Date: 22 November, 2023
 */
 
