@@ -16,7 +16,7 @@ body {
 }
 
 /* Changes size of heading */
-#content section h1 {
+#landing-page h1 {
     font-size: 5em;
     font-family: 'Avocade', sans-serif;
     font-family: 'Avocade Bold', sans-serif;
@@ -25,7 +25,7 @@ body {
     line-height: 0.75em;
 }
 
-#content section h1 span {
+#landing-page h1 span {
     color: #E63946;
     -webkit-text-stroke: none;
 }
@@ -49,6 +49,17 @@ button {
     font-size: 2em;
     width: 50%;
     padding: 10px;
+    transition: all 0.3s ease;
+}
+
+#tutorial {
+    color: #F1FAEE;
+    background-color: #E63946;
+    border: solid 2px #F1FAEE;
+    box-shadow: 1px 2px 5px #1D3557;
+    font-size: 1.5em;
+    width: 50%;
+    padding: 7px;
     transition: all 0.3s ease;
 }
 
@@ -95,4 +106,39 @@ button {
 .iconClick {
     text-shadow: inset 0px 0px 10px #1D3557;
     transform: scale(1);
+}
+
+/* A class to hide things */
+
+.hide {
+    visibility: hidden;
+}
+
+/* Loading Screen */
+
+#loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1d3557cc;
+    z-index: 1000;
+}
+
+.loader {
+    border: 1em solid rgba(168, 218, 219, 0.5);
+    border-top: 1em solid #A8DADC;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

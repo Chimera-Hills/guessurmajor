@@ -4,6 +4,19 @@ Author(s): Kevin Hong, add your name here...
 Date: 22 November, 2023
 */
 
+// Loading Screen
+
+const loadingScreen = function () {
+    // Simulate loading delay (replace this with your actual loading logic)
+    setTimeout(function () {
+        // Hide the loading screen when the loading is complete
+        $("#loading-screen").fadeOut("slow");
+    }, 750); // Replace 500 with the desired delay in milliseconds
+}
+
+// Call the loading screen function when the document is ready
+$(document).ready(loadingScreen);
+
 // Button CSS
 
 // Change the button's appearance when the mouse enters it
