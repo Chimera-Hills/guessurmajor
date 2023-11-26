@@ -18,7 +18,6 @@ body {
 /* Changes size of heading */
 #landing-page h1 {
     font-size: 5em;
-    font-family: 'Avocade', sans-serif;
     font-family: 'Avocade Bold', sans-serif;
     color: #F1FAEE;
     -webkit-text-stroke: 2px #1D3557;
@@ -28,6 +27,91 @@ body {
 #landing-page h1 span {
     color: #E63946;
     -webkit-text-stroke: none;
+}
+
+#tutorial-screen {
+    position: absolute;
+    top: -200px;
+    color: #E63946;
+    background-color: #f1faeef5;
+    border: solid 2px #E63946;
+    padding: 25px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+#tutorial-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #E63946;
+    background-color: #f1faeef5;
+    border: solid 2px #E63946;
+    padding: 25px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    z-index: 1001; /* Ensure the tutorial box appears on top of the button */
+    width: 100%;
+}
+
+#tutorial-screen h2 {
+    font-family: 'Avocade Bold', sans-serif;
+    font-size: 2em;
+}
+#tutorial-screen p {
+    font-family: 'Justy Three', sans-serif;
+    font-size: 1.10em;
+    text-indent: 5px;
+}
+
+#tutorial-exit {
+    cursor: pointer;
+    position: absolute;
+    top: 2.5%;
+    right: 5%;
+    font-family: 'Avocade Bold', sans-serif;
+    font-size: 2em;
+    user-select: none;
+}
+
+#questions-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #F1FAEE;
+    background-color: #1D3557;
+    border: solid 2px #F1FAEE;
+    padding: 15px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    z-index: 1001; /* Ensure the tutorial box appears on top of the button */
+    width: 200%; /* Adjusted the width to 60% of the viewport width */
+}
+
+#questions-screen h2 {
+    font-family: 'Avocade Bold', sans-serif;
+    font-size: 1.5em; /* Increased the font size */
+    margin-bottom: 20px; /* Added margin at the bottom for spacing */
+}
+
+#questions-screen ul {
+    text-align: center; /* Center-align the list items */
+    columns: 2; /* Split the list into two columns */
+    column-gap: 20px; /* Adjust the gap between columns as needed */
+    max-width: 100%; /* Ensure the list doesn't expand outside the bounds */
+    list-style: none;
+}
+
+#questions-screen button {
+    font-size: 1.5em; /* Increased the font size */
+    padding: 10px; /* Adjusted padding for better spacing */
+    width: 50%; /* Adjusted the width to 50% of the container */
+    margin: 10px; /* Added margin for spacing between buttons */
+    line-height: 1.5em; /* Adjusted line height for better spacing */
 }
 
 /* Button Appearance */
@@ -52,7 +136,9 @@ button {
     transition: all 0.3s ease;
 }
 
-#tutorial {
+/* Changes appearance of only the tutorial button */
+
+#tutorial-button {
     color: #F1FAEE;
     background-color: #E63946;
     border: solid 2px #F1FAEE;
@@ -106,6 +192,7 @@ button {
 .iconClick {
     text-shadow: inset 0px 0px 10px #1D3557;
     transform: scale(1);
+    user-select: none;
 }
 
 /* A class to hide things */
@@ -126,7 +213,7 @@ button {
     width: 100%;
     height: 100%;
     background: #1d3557cc;
-    z-index: 1000;
+    z-index: 1002;
 }
 
 .loader {

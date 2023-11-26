@@ -4,6 +4,19 @@ Author(s): Kevin Hong, add your name here...
 Date: 22 November, 2023
 */
 
+// Array for results
+
+resultArray = [
+    {
+        major: "Placeholder Major",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae lectus lectus."
+    },
+    {
+        major: "Placeholder Major 2",
+        desc: "Etiam tincidunt gravida turpis, eget aliquet purus bibendum sit amet."
+    }
+]
+
 // Loading Screen
 
 const loadingScreen = function () {
@@ -65,4 +78,24 @@ $(".icon").mousedown(function () {
         // Unbind the mouseup event after it's been triggered once
         $(document).off("mouseup");
     });
+});
+
+// Tutorial
+
+$("#tutorial-button").click(function () {
+    $("#tutorial-screen").removeClass("hide");
+});
+
+$("#tutorial-exit").click(function () {
+    $("#tutorial-screen").addClass("hide");
+});
+
+// Questions
+
+$("#play").click(function () {
+    $("#loading-screen").fadeIn("slow");
+    loadingScreen();
+    setTimeout(function () {
+        $("#questions-screen").removeClass("hide");
+    }, 800)
 });
