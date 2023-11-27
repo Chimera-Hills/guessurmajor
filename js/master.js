@@ -69,12 +69,12 @@ var answerArray = [ // q1 answers
         "photography",
         "gardening",
         "cooking",
-        "reading/writing",
+        "reading",
         "gaming",
         "singing",
         "dancing",
-        "listening to music",
-        "drawing/painting",
+        "music",
+        "drawing",
         "fishing",
         "hiking",
         "sports"
@@ -94,7 +94,7 @@ var answerArray = [ // q1 answers
         "poppyseed",
         "garlic",
         "sesame",
-        "chocolate chip",
+        "chocolate",
         "sourdough"
     ]
 ]
