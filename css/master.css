@@ -100,10 +100,10 @@ body {
 
 #questions-screen ul {
     text-align: center; /* Center-align the list items */
-    columns: 2; /* Split the list into two columns */
-    column-gap: 20px; /* Adjust the gap between columns as needed */
+    column-width: 300px; /* Split the list into columns */
     max-width: 100%; /* Ensure the list doesn't expand outside the bounds */
     list-style: none;
+    padding: 0;
 }
 
 #questions-screen button {
@@ -112,6 +112,22 @@ body {
     width: 50%; /* Adjusted the width to 50% of the container */
     margin: 10px; /* Added margin for spacing between buttons */
     line-height: 1.5em; /* Adjusted line height for better spacing */
+}
+
+#results-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #F1FAEE;
+    background: radial-gradient(farthest-side, #457B9D, #1D3557);
+    border: solid 2px #F1FAEE;
+    padding: 15px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    width: 200%; /* Adjusted the width to 60% of the viewport width */
 }
 
 /* Button Appearance */
