@@ -232,7 +232,7 @@ function initText(question) {
     /* Creates radio buttons based on user progress through the quiz - current 'id' generation is not w3c compliant*/
     
     for (i = 0; i < answerArray[question].length; i++) {		
-        answerSelection += "<li><button class='quiz-button' onClick='setAnswer("+ i +")' id='" + answerArray[question][i] + "'>" + answerArray[question][i] + "</button></li>";
+        answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}'>${answerArray[question][i]}</button></li>`;
     }
     
     $("#questions").html(questionArray[question]); // set question text
@@ -368,9 +368,7 @@ function handleMouseEvents(element, hoverClass, clickClass) {
 }
 
 // Apply the function to buttons
-handleMouseEvents($("section button"), "buttonHover", "buttonClick");
-
-handleMouseEvents($("li .quiz-button"), "buttonHover", "buttonClick");
+handleMouseEvents($("button"), "buttonHover", "buttonClick");
 
 // Apply the function to icons
 handleMouseEvents($(".icon"), "iconHover", "iconClick");
@@ -395,4 +393,12 @@ $("#play").click(function () {
         $("#landing-page").addClass("hide");
         changeState();
     }, 700)
+});
+
+$("#volume-icon").hide()
+
+// Menu
+
+$("#menu-icon").click(function () {
+    $("#volume-icon").fadeToggle("slow");
 });
