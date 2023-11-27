@@ -4,7 +4,7 @@ Author(s): Kevin Hong, add your name here...
 Date: 22 November, 2023
 */
 
-// Borrowed code from https://codepen.io/paigeellenstark/pen/MVGYWO?editors=0010
+// Borrowed some code from https://codepen.io/paigeellenstark/pen/MVGYWO?editors=0010
 
 // Variables
 
@@ -232,7 +232,7 @@ function initText(question) {
     /* Creates radio buttons based on user progress through the quiz - current 'id' generation is not w3c compliant*/
     
     for (i = 0; i < answerArray[question].length; i++) {		
-        answerSelection += "<li><button class='quiz-button' onClick='setAnswer("+i+")' id='" + answerArray[question][i] + "'>" + answerArray[question][i] + "</button></li>";
+        answerSelection += "<li><button class='quiz-button' onClick='setAnswer("+ i +")' id='" + answerArray[question][i] + "'>" + answerArray[question][i] + "</button></li>";
     }
     
     $("#questions").html(questionArray[question]); // set question text
@@ -242,15 +242,16 @@ function initText(question) {
 /* This function is called when a user selects an answer, NOT when answer is submitted */
 
 function setAnswer(input) {
-    tempStats = answerValues[questionState-1][input];	//selects personality values based on user selection 
-            
+    for (let i = 0; i < tempStats.length; i++) {
+        tempStats[i] += answerValues[questionState - 1][input][i];
+    }	//selects personality values based on user selection 
+    console.log(tempStats); // debug
     if (questionState < questionArray.length) {
-        initText(questionState);	//sets up next question based on user's progress through quiz
-        questionState++;			//advances progress through quiz
+        changeState();
     } else {
         // All questions answered - QUESTION TIME IS OVER!
         quizActive = false;
-        changeState()
+        changeState();
     }
 }
 
