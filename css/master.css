@@ -15,18 +15,14 @@ body {
     position: relative;
 }
 
-/* Changes size of heading */
-#landing-page h1 {
-    font-size: 5em;
-    font-family: 'Avocade Bold', sans-serif;
-    color: #F1FAEE;
-    -webkit-text-stroke: 2px #1D3557;
-    line-height: 0.75em;
-}
-
-#landing-page h1 span {
-    color: #E63946;
-    -webkit-text-stroke: none;
+#main-title {
+    position: relative;
+    width: 615px;
+    height: 381px;
+    background-image: url(../img/main-title.png);
+    background-size: contain;
+    transition: transform .1s ease-in-out;
+    z-index: 1000;
 }
 
 #tutorial-screen {
