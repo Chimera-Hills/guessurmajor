@@ -166,27 +166,27 @@ var answerValues = [
 var resultArray = [
     {
         major: "Literature Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "So you called yourself a bookworm when you were a kid? And you would probably take online quizzes about what your patronus was. Now you're in college and English was always your best subject so you've decided to be a Literature major. How's it going? Does Shakespeare finally make sense?"
     },
     {
         major: "Film Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "So you became a seasoned professional with iMovie and decided to try something more complex? Now you've got yourself into quite a pickle. Are you ever gonna get anywhere in the film industry? Do you have a chance? Do you at least have a backup major? But I'm sure you hear enough of that at Thanksgiving dinner."
     },
     {
         major: "Art History Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "So you love old boring art that no one has ever heard of? You must be fun at parties. Does anyone else know of that one niche artist from the Byzantine empire? I know you sure do. Yes please take me to the Art History of the bookstore with you, that sounds so interesting!"
     },
     {
         major: "Computer Science Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "Oh so you like video games and you think you're really smart? Is it worth it for those smelly classrooms? How about you step more than three feet away from your screen and please go outside."
     },
     {
         major: "Music Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "So have you finished any of those fourteen experimental electronica projects sitting in your GarageBand? Or were you just a band kid who dreamt too big?"
     },
     {
         major: "Biology Major",
-        desc: "Lorem ipsum dolor sit amet..."
+        desc: "I'm not even gonna ask if you wanna go out tonight because I know you have too much studying to do."
     },
 ]
 
@@ -395,10 +395,10 @@ $("#play").click(function () {
     }, 700)
 });
 
-$("#volume-icon").hide()
+$("#setting-icon").hide()
 
 // Menu
 
 $("#menu-icon").click(function () {
-    $("#volume-icon").fadeToggle("slow");
+    $("#setting-icon").fadeToggle("slow");
 });
