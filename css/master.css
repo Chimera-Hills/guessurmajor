@@ -5,8 +5,9 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background: radial-gradient(farthest-corner, #F1FAEE, #A8DADC, #457B9D, #1D3557);
-    background-color: #1D3557;
+    background-image: url(https://images4.alphacoders.com/132/1327987.png); /*Image Credit: Google*/
+    background-size: cover;
+    /* background-color: #DEE2FF; */
     overflow: hidden; /* Prevents the radial gradient from overflowing */
 }
 
@@ -19,6 +20,7 @@ body {
     position: relative;
     width: 615px;
     height: 381px;
+    bottom: 100px;
     background-image: url(../img/main-title.png);
     background-size: contain;
     transition: transform .1s ease-in-out;
@@ -28,22 +30,23 @@ body {
 #tutorial-screen {
     position: absolute;
     top: -200px;
-    color: #E63946;
+    color: #495057;
     background-color: #f1faeef5;
-    border: solid 2px #E63946;
+    border: solid 3px #CBC0D3;
     padding: 25px;
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
 }
+
 #tutorial-screen {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #E63946;
+    color: #495057;
     background-color: #f1faeef5;
-    border: solid 2px #E63946;
+    border: solid 3px #CBC0D3;
     padding: 25px;
     border-radius: 1em;
     font-size: 1.5em;
@@ -77,15 +80,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #F1FAEE;
-    background-color: #1D3557;
-    border: solid 2px #F1FAEE;
+    color: #495057;
+    border: solid 2px #4a4e69;
     padding: 15px;
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the tutorial box appears on top of the button */
     width: 200%; /* Adjusted the width to 60% of the viewport width */
+    background: rgba(255, 255, 255, 0.8)
 }
 
 #questions-screen h2 {
@@ -115,15 +118,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #F1FAEE;
-    background: radial-gradient(farthest-side, #457B9D, #1D3557);
-    border: solid 2px #F1FAEE;
+    color: #495057;
+    border: solid 2px #4a4e69;
     padding: 15px;
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001;
     width: 200%; /* Adjusted the width to 60% of the viewport width */
+    background: rgba(255, 255, 255, 0.8)
 }
 
 /* Button Appearance */
@@ -134,31 +137,41 @@ button {
     font-family: 'Justy Three', sans-serif;
     font-weight: bold;
     border-radius: 1em;
-    color: #1D3557;
-    background-color: #F1FAEE;
-    border: solid 2px #1D3557;
+    color: #495057;
+    background-color: #e7e6f7;
+    border: solid 2px #4a4e69;
     box-shadow: 1px 2px 5px #1D3557;
 }
 
 /* Changes appearance of only the play button */
 #play {
-    font-size: 2em;
-    width: 50%;
-    padding: 10px;
-    transition: all 0.3s ease;
+    width: 250px;
+    height: 56px;
+    position: fixed;
+    bottom: 25vh;
+    left: 92vh;
+    background-image: url(../img/play.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px 3px #1D3557);
+    transition: transform .1s ease-in-out;
+    z-index: 1000;
 }
 
 /* Changes appearance of only the tutorial button */
 
 #tutorial-button {
-    color: #F1FAEE;
-    background-color: #E63946;
-    border: solid 2px #F1FAEE;
-    box-shadow: 1px 2px 5px #1D3557;
-    font-size: 1.5em;
-    width: 50%;
-    padding: 7px;
-    transition: all 0.3s ease;
+    width: 295px;
+    height: 88px;
+    position: fixed;
+    bottom: 10vh;
+    left: 89.3vh;
+    background-image: url(../img/tutorial.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px 3px #1D3557);
+    transition: transform .1s ease-in-out;
+    z-index: 1000;
 }
 
 /* Changes appearance of button when mouse hovers over it */
@@ -169,11 +182,9 @@ button {
 
 /* Simulates pressing the button */
 .buttonClick {
-    color: #F1FAEE;
-    background-color: #457B9D;
-    border: solid 2px #F1FAEE;
-    box-shadow: inset 0px 0px 10px #1D3557;
+    text-shadow: inset 0px 0px 10px #1D3557;
     transform: scale(1);
+    user-select: none;
 }
 
 /* Settings Appearance */
@@ -190,10 +201,11 @@ button {
     position: fixed;
     bottom: 3vh;
     right: 3vh;
-    width: 250px;
-    height: 88px;
-    background-image: url(../img/menu-icon.png);
+    width: 200px;
+    height: 73px;
+    background-image: url(../img/menu.png);
     background-size: contain;
+    background-repeat: no-repeat;
     filter: drop-shadow(1px 1px 3px #1D3557);
     transition: transform .1s ease-in-out;
     z-index: 1002;
@@ -201,12 +213,13 @@ button {
 
 #setting-icon {
     position: fixed;
-    bottom: 12vh;
-    right: 3vh;
-    width: 250px;
-    height: 100px;
-    background-image: url(../img/settings-icon.png);
+    bottom: 15vh;
+    right: 4vh;
+    width: 200px;
+    height: 65px;
+    background-image: url(../img/settings.png);
     background-size: contain;
+    background-repeat: no-repeat;
     filter: drop-shadow(1px 1px 3px #1D3557);
     transition: transform .1s ease-in-out;
     z-index: 1001;
