@@ -8,7 +8,6 @@ body {
     background-image: url(https://images4.alphacoders.com/132/1327987.png); /*Image Credit: Google*/
     background-size: cover;
     /* background-color: #DEE2FF; */
-    overflow: hidden; /* Prevents the radial gradient from overflowing */
 }
 
 #content section {
@@ -20,7 +19,7 @@ body {
     position: relative;
     width: 615px;
     height: 381px;
-    bottom: 100px;
+    margin-bottom: 10%;
     background-image: url(../img/main-title.png);
     background-size: contain;
     transition: transform .1s ease-in-out;
@@ -162,11 +161,10 @@ button {
 
 /* Changes appearance of only the play button */
 #play {
-    width: 250px;
-    height: 56px;
-    position: fixed;
-    bottom: 25vh;
-    left: 92vh;
+    width: 355px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 1em;
     background-image: url(../img/play.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -178,11 +176,9 @@ button {
 /* Changes appearance of only the tutorial button */
 
 #tutorial-button {
-    width: 295px;
-    height: 88px;
-    position: fixed;
-    bottom: 10vh;
-    left: 89.3vh;
+    width: 421px;
+    height: 125px;
+    margin: 0 auto;
     background-image: url(../img/tutorial.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -218,8 +214,8 @@ button {
     position: fixed;
     bottom: 3vh;
     right: 3vh;
-    width: 200px;
-    height: 73px;
+    width: 296px;
+    height: 108px;
     background-image: url(../img/menu.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -232,8 +228,8 @@ button {
     position: fixed;
     bottom: 15vh;
     right: 4vh;
-    width: 200px;
-    height: 65px;
+    width: 300px;
+    height: 98px;
     background-image: url(../img/settings.png);
     background-size: contain;
     background-repeat: no-repeat;
