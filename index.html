@@ -21,8 +21,13 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
 	<script type="text/javascript" src="js/master.js" DEFER></script>
+
+	<!-- Import a JS Library for handling particle effects in the background -->
+	<!-- Credits to https://vincentgarreau.com/particles.js/ -->
+	<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
+	<div id="particles-js"></div> <!-- Container for handling particles -->
 	<main id="content">
 		<section>
 			<div id="loading-screen">

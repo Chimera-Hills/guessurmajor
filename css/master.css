@@ -5,14 +5,21 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-image: url(https://images4.alphacoders.com/132/1327987.png); /*Image Credit: Google*/
-    background-size: cover;
-    /* background-color: #DEE2FF; */
+    overflow: hidden;
+    user-select: none;
+    background: url(https://images4.alphacoders.com/132/1327987.png) center/cover no-repeat; /*Image Credit: Google*/
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    user-select: none;
 }
 
 #content section {
-    text-align: center;
     position: relative;
+    text-align: center;
 }
 
 #main-title {
@@ -20,28 +27,17 @@ body {
     width: 615px;
     height: 381px;
     margin-bottom: 10%;
-    background-image: url(../img/main-title.png);
-    background-size: contain;
+    background: url(../img/main-title.png) center/contain no-repeat;
     transition: transform .1s ease-in-out;
     z-index: 1000;
+    filter: drop-shadow(1px 1px 3px #49466e);
 }
 
 #tutorial-screen {
-    position: absolute;
-    top: -200px;
-    color: #495057;
-    background-color: #f1faeef5;
-    border: solid 3px #CBC0D3;
-    padding: 25px;
-    border-radius: 1em;
-    font-size: 1.5em;
-    transition: all 0.3s ease;
-}
-
-#tutorial-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 30%;
     transform: translate(-50%, -50%);
     color: #495057;
     background-color: #f1faeef5;
@@ -51,7 +47,6 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the tutorial box appears on top of the button */
-    width: 100%;
 }
 
 #tutorial-screen h2 {
@@ -87,7 +82,10 @@ body {
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the tutorial box appears on top of the button */
     width: 150%; /* Adjusted the width to 60% of the viewport width */
-    background: rgba(255, 255, 255, 0.8)
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 3px #49466e;
+    user-select: none;
+    
 }
 
 #questions-screen h2 {
@@ -141,8 +139,10 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001;
-    width: 200%; /* Adjusted the width to 60% of the viewport width */
-    background: rgba(255, 255, 255, 0.8)
+    width: 175%; /* Adjusted the width to 60% of the viewport width */
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 3px #49466e;
+    user-select: none;
 }
 
 /* Button Appearance */
@@ -156,7 +156,7 @@ button {
     color: #495057;
     background-color: #e7e6f7;
     border: solid 2px #4a4e69;
-    box-shadow: 1px 2px 5px #1D3557;
+    box-shadow: 1px 2px 5px #49466e;
 }
 
 /* Changes appearance of only the play button */
@@ -168,7 +168,7 @@ button {
     background-image: url(../img/play.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1000;
 }
@@ -182,20 +182,20 @@ button {
     background-image: url(../img/tutorial.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1000;
 }
 
 /* Changes appearance of button when mouse hovers over it */
 .buttonHover {
-    text-shadow: 1px 1px 2px #457B9D;
+    text-shadow: 1px 1px 2px #49466e;
     transform: scale(1.2);
 }
 
 /* Simulates pressing the button */
 .buttonClick {
-    text-shadow: inset 0px 0px 10px #1D3557;
+    text-shadow: inset 0px 0px 10px #49466e;
     transform: scale(1);
     user-select: none;
 }
@@ -219,7 +219,7 @@ button {
     background-image: url(../img/menu.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1002;
 }
@@ -233,19 +233,17 @@ button {
     background-image: url(../img/settings.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1001;
 }
 
 .iconHover {
-    text-shadow: 1px 1px 2px #457B9D;
     transform: scale(1.2);
 }
 
 /* Simulates pressing the button */
 .iconClick {
-    text-shadow: inset 0px 0px 10px #1D3557;
     transform: scale(1);
     user-select: none;
 }
@@ -267,13 +265,13 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #1d3557cc;
+    background: #6b788fc2;
     z-index: 1005;
 }
 
 .loader {
-    border: 1em solid rgba(168, 218, 219, 0.5);
-    border-top: 1em solid #A8DADC;
+    border: 1em solid #dee2ffcb;
+    border-top: 1em solid #FEEAFA;
     border-radius: 50%;
     width: 5em;
     height: 5em;
