@@ -232,11 +232,16 @@ function initText(question) {
     /* Creates radio buttons based on user progress through the quiz - current 'id' generation is not w3c compliant*/
     
     for (i = 0; i < answerArray[question].length; i++) {		
-        answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}'>${answerArray[question][i]}</button></li>`;
+        answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}' class='choices'>${answerArray[question][i]}</button></li>`;
     }
     
     $("#questions").html(questionArray[question]); // set question text
     $("#answers").html(answerSelection); // set answer text
+
+    // Apply event handlers only to the buttons within the answers container
+    $("#answers button").each(function () {
+        handleMouseEvents($(this), "buttonHover", "buttonClick");
+    });
 }
 
 /* This function is called when a user selects an answer, NOT when answer is submitted */

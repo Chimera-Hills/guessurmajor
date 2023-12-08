@@ -87,7 +87,7 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the tutorial box appears on top of the button */
-    width: 200%; /* Adjusted the width to 60% of the viewport width */
+    width: 150%; /* Adjusted the width to 60% of the viewport width */
     background: rgba(255, 255, 255, 0.8)
 }
 
@@ -103,14 +103,31 @@ body {
     max-width: 100%; /* Ensure the list doesn't expand outside the bounds */
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#questions-screen li {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage as needed */
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    #questions-screen li {
+        flex: 0 0 calc(100% - 20px);
+    }
 }
 
 #questions-screen button {
     font-size: 1.5em; /* Increased the font size */
-    padding: 10px; /* Adjusted padding for better spacing */
+    padding: 5px; /* Adjusted padding for better spacing */
     width: 50%; /* Adjusted the width to 50% of the container */
-    margin: 10px; /* Added margin for spacing between buttons */
+    margin: 5px; /* Added margin for spacing between buttons */
     line-height: 1.5em; /* Adjusted line height for better spacing */
+    min-width: 75%; /* Set a minimum width for the button */
+
 }
 
 #results-screen {
