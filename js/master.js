@@ -408,8 +408,8 @@ $("#menu-icon").click(function () {
     $("#setting-icon").fadeToggle("slow");
 });
 
-// Particle effects for the background
 
+// Particle effects for the background
 particlesJS('particles-js', {
     "particles": {
         "number": {
