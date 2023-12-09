@@ -28,9 +28,8 @@ body {
 }
 
 #main-title {
-    position: relative;
-    width: 615px;
-    height: 381px;
+    width: 597px;
+    height: 362px;
     margin-bottom: 10%;
     background: url(../img/main-title.png) center/contain no-repeat;
     transition: transform .1s ease-in-out;
@@ -75,9 +74,10 @@ body {
 }
 
 #questions-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 60%;
     transform: translate(-50%, -50%);
     color: #495057;
     border: solid 2px #4a4e69;
@@ -86,7 +86,6 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the tutorial box appears on top of the button */
-    width: 150%; /* Adjusted the width to 60% of the viewport width */
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 1px 3px #49466e;
     user-select: none;
