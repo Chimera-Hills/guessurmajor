@@ -32,7 +32,6 @@ var questionArray =	[
     "How do you like your coffee?", // q5
     "What's your favorite type of bagel?", // q6
     "What's your preferred method of to-do list?" //q7
-    
 ];
 
 // Array for answers
@@ -113,7 +112,7 @@ var answerArray = [ // q1 answers
 ]
 
 // Array of stat increments for each answer for every question
-// Literature | Film | Art History | CompSci | Music | Biology
+// Literature | Film | Art History | CompSci | Music | Biology | Psychology
 var answerValues = [ 
     [ // q1 values
         [ 0, 0, 3, 2, 1, 0, 0 ], // red
@@ -383,7 +382,12 @@ function displayResults(personality) {
                 printResult.text(`You are a ${resultArray[5].major}!`);
                 printDesc.text(`${resultArray[5].desc}`);
                 break;
-                
+            
+            case 6: // Psychology Major
+                printResult.text(`You are a ${resultArray[6].major}!`);
+                printDesc.text(`${resultArray[6].desc}`);
+                break;
+
             default: 
                 console.log("Bleh");
         }
