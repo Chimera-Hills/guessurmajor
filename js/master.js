@@ -244,17 +244,6 @@ function initText(question) {
     $("#answers").html(answerSelection); // set answer text
 
     // Apply event handlers only to the buttons within the answers container
-    $("#answers button").on("click", function () {
-        try {
-            playSound(CLICK_SOUND);
-        } catch(error) {
-            handleException(error);
-        }
-        const index = $(this).data('index');
-        setAnswer(index);
-    });
-
-    // Apply event handlers only to the buttons within the answers container
     $("#answers button").each(function () {
         handleMouseEvents($(this), "buttonHover", "buttonClick");
     });
@@ -395,6 +384,12 @@ function handleMouseEvents(element, hoverClass, clickClass) {
 
     // Change appearance on mouse click
     element.on("mousedown", function () {
+        try {
+            playSound(CLICK_SOUND);
+        } catch(error) {
+            handleException(error);
+        }
+        
         $(this).addClass(clickClass);
 
         // Bind mouseup to the document to handle cases where the mouse is released outside the button
@@ -415,31 +410,16 @@ handleMouseEvents($(".icon"), "iconHover", "iconClick");
 // Tutorial
 
 $("#tutorial-button").click(function () {
-    try {
-        playSound(CLICK_SOUND);
-    } catch(error) {
-        handleException(error);
-    }
     $("#tutorial-screen").removeClass("hide");
 });
 
 $("#tutorial-exit").click(function () {
-    try {
-        playSound(CLICK_SOUND);
-    } catch(error) {
-        handleException(error);
-    }
     $("#tutorial-screen").addClass("hide");
 });
 
 // Play
 
 $("#play").click(function () {
-    try {
-        playSound(CLICK_SOUND);
-    } catch(error) {
-        handleException(error);
-    }
     // Show loading screen
     loadingScreen();
     setTimeout(function () {
@@ -454,11 +434,6 @@ $("#setting-icon").hide()
 // Menu
 
 $("#menu-icon").click(function () {
-    try {
-        playSound(CLICK_SOUND);
-    } catch(error) {
-        handleException(error);
-    }
     $("#setting-icon").fadeToggle("slow");
 });
 
