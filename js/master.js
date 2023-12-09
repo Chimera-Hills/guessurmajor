@@ -293,7 +293,12 @@ var buttonElement = document.getElementById("quiz-button"); */
 
 // Functions
 
-quizButton.on("click", changeState); //Add click event listener to main button
+try {
+    quizButton.on("click", changeState); //Add click event listener to main button
+} catch (error) {
+    handleException(error);
+}
+
 
 // Progresses the user through the quiz
 
@@ -474,7 +479,11 @@ const loadingScreen = function () {
 }
 
 // Call the loading screen function when the document is ready
-$(document).ready(loadingScreen);
+try {
+    $(document).ready(loadingScreen);
+} catch (error) {
+    handleException(error);
+}
 
 // Reusable function for handling mouse events
 // From ChatGPT (Simplified the code I made for both button and icons)
