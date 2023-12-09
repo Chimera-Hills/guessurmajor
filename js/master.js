@@ -408,6 +408,15 @@ $("#menu-icon").click(function () {
     $("#setting-icon").fadeToggle("slow");
 });
 
+// Sound effects
+
+$("#menu-icon").on("click", function() {
+    var sound = new Howl({
+        src: ['sounds/click.mp3'],
+        volume: 1
+    })
+    sound.play()
+})
 
 // Particle effects for the background
 particlesJS('particles-js', {
@@ -519,4 +528,4 @@ particlesJS('particles-js', {
         }
       },
       "retina_detect": true
-  });
+});
