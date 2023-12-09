@@ -265,7 +265,6 @@ function setAnswer(input) {
         } else {
             // All questions answered - QUESTION TIME IS OVER!
             quizActive = false;
-            playSound(RESULT_SOUND);
             changeState();
         }
     } catch (error) {
@@ -312,6 +311,7 @@ function displayResults(personality) {
     try {
         setTimeout(function () {
             results.removeClass("hide");
+            playSound(RESULT_SOUND);
         }, 800)
         switch (personality) {
             case 0:	// Literature Major
