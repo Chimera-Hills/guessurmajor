@@ -31,7 +31,12 @@ var questionArray =	[
     "What's your hobby?", // q4
     "How do you like your coffee?", // q5
     "What's your favorite type of bagel?", // q6
-    "What's your preferred method of to-do list?" //q7
+    "What's your preferred method of to-do list?", //q7
+    "Do you prefer to read a book or watch a movie?", //q8
+    "When you're assigned a long-term project, do you start right away or wait?", //q9
+    "What is your best memory from your childhood?", //q10
+    "Are you a morning person or a night owl?", //q11
+    "Are you organized or do you prefer a more flexible approach?" //q12
 ];
 
 // Array for answers
@@ -103,11 +108,41 @@ var answerArray = [
         "the notes app",
         "my brain",
         "all of the above"
+    ],
+    [ //q8 answers
+        "read a book",
+        "watch a movie"
+    ],
+    [ //q9 answers
+        "start right away",
+        "wait until deadline"
+    ],
+    [ //q10 answers
+        "family vacations",
+        "birthday celebrations",
+        "field trips",
+        "playing with friends",
+        "special holidays",
+        "learning new skills",
+        "family gatherings",
+        "camping adventures"
+    ],
+    [ //q11 answers
+        "morning person",
+        "night owl"
+    ],
+    [ //q12 answers
+        "highly organized",
+        "moderately organized",
+        "balanced",
+        "somewhat flexible",
+        "highly flexible"
     ]
 ]
 
 // Array of stat increments for each answer for every question
 // Literature | Film | Art History | CompSci | Music | Biology | Psychology
+// Template model to copy + paste: [ 0, 0, 0, 0, 0, 0, 0 ]
 var answerValues = [ 
     [ // q1 values
         [ 0, 0, 3, 2, 1, 0, 0 ], // red
@@ -149,7 +184,7 @@ var answerValues = [
         [ 1, 0, 3, 0, 2, 0, 1 ], // drawing/painting
         [ 0, 2, 0, 0, 1, 3, 0 ], // fishing
         [ 0, 3, 1, 0, 0, 2, 2 ], // hiking
-        [ 0, 0, 0, 0, 0, 0, 0 ] // sports
+        [ 0, 2, 0, 0, 1, 0, 3 ] // sports
     ],
     [ // q5 values
         [ 3, 1, 0, 0, 0, 2, 1 ], // black, iced
@@ -168,16 +203,45 @@ var answerValues = [
         [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
     ],
     [ //q7 values
-        [1, 0, 2, 0, 1, 3, 0], // physical planner,
-        [2, 0, 3, 0, 1, 0, 2], // calendar on the wall,
-        [2, 3, 0, 0, 1, 0, 2], // sticky notes,
-        [0, 2, 0, 3, 1, 1, 0], // virtual planner/calendar,
-        [3, 1, 2, 0, 0, 0, 2], // bullet journal,
-        [2, 3, 0, 0, 1, 0, 2], // the notes app,
-        [0, 1, 0, 3, 0, 0, 2], // my brain,
-        [0, 2, 0, 0, 0, 1, 3] // all of the above
+        [ 1, 0, 2, 0, 1, 3, 0 ], // physical planner,
+        [ 2, 0, 3, 0, 1, 0, 2 ], // calendar on the wall,
+        [ 2, 3, 0, 0, 1, 0, 2 ], // sticky notes,
+        [ 0, 2, 0, 3, 1, 1, 0 ], // virtual planner/calendar,
+        [ 3, 1, 2, 0, 0, 0, 2 ], // bullet journal,
+        [ 2, 3, 0, 0, 1, 0, 2 ], // the notes app,
+        [ 0, 1, 0, 3, 0, 0, 2 ], // my brain,
+        [ 0, 2, 0, 0, 0, 1, 3 ] // all of the above
 
-    ]
+    ],
+    [ //q8 values 
+        [ 3, 0, 2, 0, 1, 3, 3 ], // read a book
+        [ 0, 3, 1, 3, 2, 0, 0 ], // watch a movie
+    ],
+    [ //q9 values
+        [ 3, 2, 3, 0, 1, 0, 2 ], // start right away
+        [ 0, 1, 0, 3, 2, 3, 1 ], // wait until deadline
+    ],
+    [ //q10 values
+        [ 0, 3, 2, 0, 1, 1, 0 ], // family vacations,
+        [ 2, 0, 0, 2, 3, 0, 0 ], // birthday celebrations,
+        [ 0, 1, 3, 1, 2, 3, 1 ], // field trips,
+        [ 1, 0, 0, 3, 2, 0, 1 ], // playing with friends,
+        [ 1, 0, 1, 0, 3, 0, 1 ], // special holidays,
+        [ 3, 2, 0, 2, 1, 2, 0 ], // learning new skills,
+        [ 2, 0, 1, 0, 3, 0, 3 ], // family gatherings,
+        [ 0, 3, 0, 0, 0, 3, 2 ] // camping adventures
+    ],
+    [ //q11 values
+        [ 3, 2, 3, 0, 0, 0, 3 ], // morning person,
+        [ 0, 1, 0, 3, 3, 3, 0 ] // night owl
+    ],
+    [ //q12 values
+        [ 3, 2, 3, 1, 0, 3, 0 ], // highly organized,
+        [ 2, 3, 0, 2, 0, 0, 1 ], // moderately organized,
+        [ 1, 2, 2, 3, 1, 1, 2 ], // balanced mix of both,
+        [ 0, 1, 0, 2, 2, 0, 3 ], // somewhat flexible,
+        [ 0, 0, 1, 1, 3, 3, 2 ] // highly flexible
+    ],
 ]
 
 // Array for results
@@ -392,9 +456,11 @@ function displayResults(personality) {
     
 }
 
-function handleException(error) {
+function handleException(error, additionalInfo) {
     console.error("An error occurred:", error.message);
+    console.error("Additional information:", additionalInfo);
 }
+
 
 // Loading Screen
 
