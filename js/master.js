@@ -265,6 +265,7 @@ function setAnswer(input) {
         } else {
             // All questions answered - QUESTION TIME IS OVER!
             quizActive = false;
+            playSound(RESULT_SOUND);
             changeState();
         }
     } catch (error) {
@@ -454,6 +455,7 @@ $("#menu-icon").click(function () {
 
 // Define sound file paths as constants
 const CLICK_SOUND = 'sounds/click.mp3';
+const RESULT_SOUND = 'sounds/result.mp3';
 
 // Function to play a sound
 function playSound(soundFile) {
