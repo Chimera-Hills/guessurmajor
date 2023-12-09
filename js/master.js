@@ -245,6 +245,9 @@ function initText(question) {
 
     // Apply event handlers only to the buttons within the answers container
     $("#answers button").each(function () {
+        $(this).on("click", function () {
+            playSound(CLICK_SOUND);
+        });
         handleMouseEvents($(this), "buttonHover", "buttonClick");
     });
 }
@@ -404,31 +407,19 @@ handleMouseEvents($(".icon"), "iconHover", "iconClick");
 // Tutorial
 
 $("#tutorial-button").click(function () {
-    var sound = new Howl({
-        src: ['sounds/click.mp3'],
-        volume: 1
-    })
-    sound.play()
+    playSound(CLICK_SOUND);
     $("#tutorial-screen").removeClass("hide");
 });
 
 $("#tutorial-exit").click(function () {
-    var sound = new Howl({
-        src: ['sounds/click.mp3'],
-        volume: 1
-    })
-    sound.play()
+    playSound(CLICK_SOUND);
     $("#tutorial-screen").addClass("hide");
 });
 
 // Play
 
 $("#play").click(function () {
-    var sound = new Howl({
-        src: ['sounds/click.mp3'],
-        volume: 1
-    })
-    sound.play()
+    playSound(CLICK_SOUND);
     // Show loading screen
     loadingScreen();
     setTimeout(function () {
@@ -446,24 +437,20 @@ $("#menu-icon").click(function () {
     $("#setting-icon").fadeToggle("slow");
 });
 
-// Quiz buttons
-$("button").on("click", function() {
-    var sound = new Howl({
-        src: ['sounds/click.mp3'],
-        volume: 1
-    })
-    sound.play()
-})
-
 // Sound effects
 
-$("#menu-icon").on("click", function() {
+// Define sound file paths as constants
+const CLICK_SOUND = 'sounds/click.mp3';
+
+// Function to play a sound
+function playSound(soundFile) {
     var sound = new Howl({
-        src: ['sounds/click.mp3'],
+        src: [soundFile],
         volume: 1
-    })
-    sound.play()
-})
+    });
+
+    sound.play();
+}
 
 // Particle effects for the background
 particlesJS('particles-js', {
