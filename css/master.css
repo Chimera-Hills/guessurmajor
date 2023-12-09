@@ -1,6 +1,7 @@
 /* Fontstyles for styling */
 @import url('https://fonts.cdnfonts.com/css/ibm-selectric-manifold');
 @import url('https://fonts.cdnfonts.com/css/justy-three');
+@import url('https://fonts.cdnfonts.com/css/handwritten');
 
 /* Align elements to the center */
 body {
@@ -96,6 +97,7 @@ body {
     font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 1.75em;
     margin-bottom: 20px; /* Added margin at the bottom for spacing */
+    text-shadow: 1px 1px 2px #998ca3;
 }
 
 #questions-screen ul {
@@ -153,12 +155,14 @@ body {
     font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 1.75em;
     margin-bottom: 20px; /* Added margin at the bottom for spacing */
+    text-shadow: 1px 1px 2px #998ca3;
 }
 
 #results-screen p {
-    font-family: 'Justy Three', sans-serif;
-    font-size: 1.25em;
+    font-family: 'Handwritten', sans-serif;
+    font-size: 1em;
     margin-left: 1%;
+    text-shadow: 1px 1px 2px #998ca3;
 }
 
 .align-right {
