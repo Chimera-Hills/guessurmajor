@@ -1,3 +1,7 @@
+/* Fontstyles for styling */
+@import url('https://fonts.cdnfonts.com/css/ibm-selectric-manifold');
+@import url('https://fonts.cdnfonts.com/css/justy-three');
+
 /* Align elements to the center */
 body {
     display: flex;
@@ -50,7 +54,7 @@ body {
 }
 
 #tutorial-screen h2 {
-    font-family: 'Avocade Bold', sans-serif;
+    font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 2em;
 }
 #tutorial-screen p {
@@ -64,7 +68,7 @@ body {
     position: absolute;
     top: 2.5%;
     right: 5%;
-    font-family: 'Avocade Bold', sans-serif;
+    font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 2em;
     user-select: none;
 }
@@ -89,8 +93,8 @@ body {
 }
 
 #questions-screen h2 {
-    font-family: 'Avocade Bold', sans-serif;
-    font-size: 1.5em; /* Increased the font size */
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 1.75em;
     margin-bottom: 20px; /* Added margin at the bottom for spacing */
 }
 
@@ -128,9 +132,10 @@ body {
 }
 
 #results-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 50%;
     transform: translate(-50%, -50%);
     color: #495057;
     border: solid 2px #4a4e69;
@@ -139,10 +144,32 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001;
-    width: 175%; /* Adjusted the width to 60% of the viewport width */
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 1px 3px #49466e;
     user-select: none;
+}
+
+#results-screen h2 {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 1.75em;
+    margin-bottom: 20px; /* Added margin at the bottom for spacing */
+}
+
+#results-screen p {
+    font-family: 'Justy Three', sans-serif;
+    font-size: 1.25em;
+    margin-left: 1%;
+}
+
+.align-right {
+    float: right;
+}
+
+#results-screen img {
+    margin: 1%;
+    height: auto;
+    user-select: none;
+    filter: drop-shadow(1px 1px 3px #998ca3);
 }
 
 /* Button Appearance */

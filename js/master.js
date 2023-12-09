@@ -197,6 +197,7 @@ var quiz = $("#questions-screen");
 var printResult = $("#top-score");
 var printDesc = $("#score-desc");
 var quizButton = $(".quiz-button");
+var characterImage = $("#character-image");
 
 /* var results = document.getElementById("results");
 var quiz = document.getElementById("questions-screen");
@@ -313,32 +314,44 @@ function displayResults(personality) {
         }, 800)
         switch (personality) {
             case 0:	// Literature Major
-                printResult.text(`${resultArray[0].major}`);
+                printResult.text(`You are a ${resultArray[0].major}!`);
+                characterImage.attr("src", "./img/lit-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                    width: "20%",
+                });
                 printDesc.text(`${resultArray[0].desc}`);
                 break;
                 
             case 1:	// Film Major
-                printResult.text(`${resultArray[1].major}`);
+                printResult.text(`You are a ${resultArray[1].major}!`);
+                characterImage.attr("src", "./img/film-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                    width: "17.5%",
+                });
                 printDesc.text(`${resultArray[1].desc}`);
                 break;
                 
             case 2:	// Art History Major
-                printResult.text(`${resultArray[2].major}`);
+                printResult.text(`You are a ${resultArray[2].major}!`);
                 printDesc.text(`${resultArray[2].desc}`);
                 break;
                 
             case 3:	// Computer Science Major
-                printResult.text(`${resultArray[3].major}`);
+                printResult.text(`You are a ${resultArray[3].major}!`);
+                characterImage.attr("src", "./img/compSci-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                    width: "30%",
+                });
                 printDesc.text(`${resultArray[3].desc}`);
                 break;
                 
             case 4:	// Music Major
-                printResult.text(`${resultArray[4].major}`);
+                printResult.text(`You are a ${resultArray[4].major}!`);
+                characterImage.attr("src", "./img/music-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                    width: "27.5%",
+                });
                 printDesc.text(`${resultArray[4].desc}`);
                 break;
                 
             case 5:	// Biology Major
-                printResult.text(`${resultArray[5].major}`);
+                printResult.text(`You are a ${resultArray[5].major}!`);
                 printDesc.text(`${resultArray[5].desc}`);
                 break;
                 
