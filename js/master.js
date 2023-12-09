@@ -1,4 +1,4 @@
-/*
+987/*
 master.js - 
 Author(s): Kevin Hong, add your name here...
 Date: 22 November, 2023
@@ -17,7 +17,8 @@ var userStats =	[
     0, 	// Art History Major 
     0, 	// CompSci Major
     0, 	// Music Major 
-    0 	// Biology Major
+    0, 	// Biology Major
+    0   // Psychology Major
 ];
 
 var tempStats = userStats; //Holds stat increases relating to user selection
@@ -29,7 +30,9 @@ var questionArray =	[
     "What's your favorite season?", // q3
     "What's your hobby?", // q4
     "How do you like your coffee?", // q5
-    "What's your favorite type of bagel?" // q6
+    "What's your favorite type of bagel?", // q6
+    "What's your preferred method of to-do list?" //q7
+    
 ];
 
 // Array for answers
@@ -97,68 +100,89 @@ var answerArray = [ // q1 answers
         "chocolate",
         "sourdough"
     ]
+    [//q7 answers
+        "physical planner",
+        "calendar on the wall",
+        "sticky notes",
+        "virtual planner/calendar",
+        "bullet journal",
+        "the notes app",
+        "my brain",
+        "all of the above"
+    ]
 ]
 
 // Array of stat increments for each answer for every question
 // Literature | Film | Art History | CompSci | Music | Biology
 var answerValues = [ 
     [ // q1 values
-        [ 0, 0, 3, 2, 1, 0 ], // red
-        [ 3, 2, 1, 0, 0, 0 ], // orange
-        [ 2, 3, 0, 0, 0, 1 ], // yellow
-        [ 0, 0, 0, 1, 2, 3 ], // green
-        [ 1, 0, 0, 3, 0, 2 ], // blue
-        [ 0, 1, 2, 0, 3, 0 ] // violet
+        [ 0, 0, 3, 2, 1, 0, 0 ], // red
+        [ 3, 2, 1, 0, 0, 0, 0 ], // orange
+        [ 2, 3, 0, 0, 0, 1, 1 ], // yellow
+        [ 0, 0, 0, 1, 2, 3, 2 ], // green
+        [ 1, 0, 0, 3, 0, 2, 0 ], // blue
+        [ 0, 1, 2, 0, 3, 0, 2 ] // violet
     ],
     [ // q2 values
-        [ 2, 3, 0, 1, 0, 0 ], // Capricorn
-        [ 0, 1, 2, 0, 3, 0 ], // Aquarius
-        [ 0, 2, 3, 0, 1, 0 ], // Pisces
-        [ 3, 2, 0, 0, 1, 0 ], // Aries
-        [ 0, 1, 0, 2, 0, 3 ], // Taurus
-        [ 2, 0, 1, 0, 3, 0 ], // Gemini
-        [ 3, 0, 2, 0, 1, 0 ], // Cancer
-        [ 1, 3, 0, 0, 2, 0 ], // Leo
-        [ 0, 0, 0, 3, 1, 2 ], // Virgo
-        [ 3, 0, 1, 0, 2, 0 ], // Libra
-        [ 2, 0, 3, 0, 0, 1 ], // Scorpio
-        [ 1, 2, 0, 0, 0, 3 ] // Sagittarius
+        [ 2, 3, 0, 1, 0, 0, 0 ], // Capricorn
+        [ 0, 1, 2, 0, 2, 0, 3 ], // Aquarius
+        [ 0, 2, 3, 0, 1, 0, 1 ], // Pisces
+        [ 3, 2, 0, 0, 1, 0, 0 ], // Aries
+        [ 0, 1, 0, 2, 0, 3, 0 ], // Taurus
+        [ 2, 0, 1, 0, 3, 0, 2 ], // Gemini
+        [ 3, 0, 2, 0, 1, 0, 2 ], // Cancer
+        [ 1, 3, 0, 0, 2, 0, 0 ], // Leo
+        [ 0, 0, 0, 3, 1, 2, 1 ], // Virgo
+        [ 3, 0, 1, 0, 2, 0, 2 ], // Libra
+        [ 2, 0, 3, 0, 0, 1, 1 ], // Scorpio
+        [ 1, 2, 0, 0, 0, 3, 0 ] // Sagittarius
     ],
     [ // q3 values
-        [ 0, 3, 2, 0, 1, 0 ], // Spring
-        [ 0, 0, 3, 0, 2, 1 ], // Summer
-        [ 3, 1, 2, 0, 0, 0 ], // Autumn
-        [ 0, 1, 0, 3, 0, 2 ] // Winter
+        [ 0, 3, 2, 0, 1, 0, 1 ], // Spring
+        [ 0, 0, 3, 0, 2, 1, 0 ], // Summer
+        [ 3, 1, 2, 0, 0, 0, 2 ], // Autumn
+        [ 0, 1, 0, 3, 0, 2, 3] // Winter
     ],
     [ // q4 values
-        [ 0, 3, 2, 0, 0, 1 ], // photography
-        [ 2, 0, 1, 0, 0, 3 ], // gardening
-        [ 1, 2, 0, 0, 0, 3 ], // cooking
-        [ 3, 0, 0, 0, 2, 1 ], // reading/writing
-        [ 0, 0, 0, 3, 1, 2 ], // gaming
-        [ 2, 0, 1, 0, 3, 0 ], // singing
-        [ 0, 1, 2, 0, 3, 0 ], // dancing
-        [ 0, 0, 0, 2, 3, 1 ], // listening to music
-        [ 1, 0, 3, 0, 2, 0 ], // drawing/painting
-        [ 0, 2, 0, 0, 1, 3 ], // fishing
-        [ 0, 3, 1, 0, 0, 2 ], // hiking
-        [ 0, 0, 0, 0, 0, 0 ] // sports
+        [ 0, 3, 2, 0, 0, 1, 0 ], // photography
+        [ 2, 0, 1, 0, 0, 3, 2 ], // gardening
+        [ 1, 2, 0, 0, 0, 3, 1 ], // cooking
+        [ 3, 0, 0, 0, 2, 1, 2 ], // reading/writing
+        [ 0, 0, 0, 3, 1, 2, 0 ], // gaming
+        [ 2, 0, 1, 0, 3, 0, 1 ], // singing
+        [ 0, 1, 2, 0, 3, 0, 2 ], // dancing
+        [ 0, 0, 0, 2, 3, 1, 1 ], // listening to music
+        [ 1, 0, 3, 0, 2, 0, 1 ], // drawing/painting
+        [ 0, 2, 0, 0, 1, 3, 0 ], // fishing
+        [ 0, 3, 1, 0, 0, 2, 2 ], // hiking
+        [ 0, 0, 0, 0, 0, 0, 0 ] // sports
     ],
     [ // q5 values
-        [ 3, 1, 0, 0, 0, 2 ], // black, iced
-        [ 1, 2, 0, 0, 0, 3 ], // black, hot
-        [ 0, 0, 2, 1, 3, 0 ], // milky, iced
-        [ 0, 0, 3, 2, 1, 0 ], // milky, hot
+        [ 3, 1, 0, 0, 0, 2, 1 ], // black, iced
+        [ 1, 2, 0, 0, 0, 3, 2 ], // black, hot
+        [ 0, 0, 2, 1, 3, 0, 0 ], // milky, iced
+        [ 0, 0, 3, 2, 1, 0, 1 ], // milky, hot
     ],
     [ // q6 values
-        [ 3, 0, 2, 0, 0, 1 ], // plain
-        [ 0, 0, 3, 1, 2, 0 ], // blueberry
-        [ 2, 3, 0, 0, 0, 1 ], // onion
-        [ 0, 0, 2, 1, 3, 0 ], // poppyseed
-        [ 0, 2, 0, 3, 1, 0 ], // garlic
-        [ 0, 0, 1, 0, 2, 3 ], // sesame
-        [ 1, 0, 0, 3, 0, 2 ], // chocolate chip
-        [ 0, 1, 3, 2, 0, 0 ] // sourdough
+        [ 3, 0, 2, 0, 0, 1, 0 ], // plain
+        [ 0, 0, 3, 1, 2, 0, 1 ], // blueberry
+        [ 2, 3, 0, 0, 0, 1, 0 ], // onion
+        [ 0, 0, 2, 1, 3, 0, 2 ], // poppyseed
+        [ 0, 2, 0, 3, 1, 0, 1 ], // garlic
+        [ 0, 0, 1, 0, 2, 3, 2 ], // sesame
+        [ 1, 0, 0, 3, 0, 2, 0 ], // chocolate chip
+        [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
+    ]
+    [ //q7 values
+        [1, 0, 2, 0, 1, 3, 0], // physical planner,
+        [2, 0, 3, 0, 1, 0, 2], // calendar on the wall,
+        [2, 3, 0, 0, 1, 0, 2], // sticky notes,
+        [0, 2, 0, 3, 1, 1, 0], // virtual planner/calendar,
+        [3, 1, 2, 0, 0, 0, 2], // bullet journal,
+        [2, 3, 0, 0, 1, 0, 2], // the notes app,
+        [0, 1, 0, 3, 0, 0, 2], // my brain,
+        [0, 2, 0, 0, 0, 1, 3] // all of the above
+
     ]
 ]
 
@@ -174,7 +198,7 @@ var resultArray = [
     },
     {
         major: "Art History Major",
-        desc: "So you love old boring art that no one has ever heard of? You must be fun at parties. Does anyone else know of that one niche artist from the Byzantine empire? I know you sure do. Yes please take me to the Art History of the bookstore with you, that sounds so interesting!"
+        desc: "So you love old boring art that no one has ever heard of? You must be fun at parties. Does anyone else know of that one niche artist from the Byzantine empire? I know you sure do. Yes please take me to the Art History section of the bookstore with you, that sounds so interesting!"
     },
     {
         major: "Computer Science Major",
@@ -182,11 +206,15 @@ var resultArray = [
     },
     {
         major: "Music Major",
-        desc: "So have you finished any of those fourteen experimental electronica projects sitting in your GarageBand? Or were you just a band kid who dreamt too big?"
+        desc: "So have you finished any of those fourteen experimental electronica projects sitting in your GarageBand? Or maybe you were that kid who wrote BAND IS LIFE on their wrist after picking up the trumpet in middle school and it just really stuck. Then you got to high school and once you posted you got a few streams on Soundcloud you decided it was time to reach for the stars. "
     },
     {
         major: "Biology Major",
-        desc: "I'm not even gonna ask if you wanna go out tonight because I know you have too much studying to do."
+        desc: "I'm not even gonna ask if you wanna go out tonight because I know you have too much studying to do. Did you just have a really good biology teacher in high school or something?"
+    },
+    {
+        major: "Psychology Major",
+        desc: "“Yeah I just think the human brain is just so dark and twisted.” -you probably. You've probably been going to therapy for a while, got a couple diagnoses under your belt and decided your life path had paved its way. Are you still the therapist friend or have you recovered from that phase? "
     },
 ]
 
