@@ -1,6 +1,6 @@
-987/*
-master.js - 
-Author(s): Kevin Hong, add your name here...
+/*
+master.js - Creating a personality quiz using arrays, JS libraries, and a bunch of other stuff
+Author(s): Kevin Hong, Jess Brass, Juliet Montel, Michelle Wang
 Date: 22 November, 2023
 */
 
@@ -35,8 +35,8 @@ var questionArray =	[
 ];
 
 // Array for answers
-var answerArray = [ // q1 answers
-    [
+var answerArray = [ 
+    [ // q1 answers
         "red",
         "orange",
         "yellow",
@@ -44,8 +44,7 @@ var answerArray = [ // q1 answers
         "blue",
         "violet"
     ],
-    // q2 answers
-    [
+    [ // q2 answers
         "Capricorn",
         "Aquarius",
         "Pisces",
@@ -59,15 +58,13 @@ var answerArray = [ // q1 answers
         "Scorpio",
         "Sagittarius"
     ],
-    // q3 answers
-    [
+    [ // q3 answers
         "Spring",
         "Summer",
         "Autumn",
         "Winter"
     ],
-    // q4 answers
-    [
+    [ // q4 answers
         "photography",
         "gardening",
         "cooking",
@@ -81,15 +78,13 @@ var answerArray = [ // q1 answers
         "hiking",
         "sports"
     ],
-    // q5 answers
-    [
+    [ // q5 answers
         "black, iced",
         "black, hot",
         "milky, iced",
         "milky, hot",
     ],
-    // q6 answers
-    [
+    [ // q6 answers
         "plain",
         "blueberry",
         "onion",
@@ -98,12 +93,12 @@ var answerArray = [ // q1 answers
         "sesame",
         "chocolate",
         "sourdough"
-    ]
-    [//q7 answers
+    ],
+    [ //q7 answers
         "physical planner",
-        "calendar on the wall",
+        "wall calendar",
         "sticky notes",
-        "virtual planner/calendar",
+        "virtual planner",
         "bullet journal",
         "the notes app",
         "my brain",
@@ -171,7 +166,7 @@ var answerValues = [
         [ 0, 0, 1, 0, 2, 3, 2 ], // sesame
         [ 1, 0, 0, 3, 0, 2, 0 ], // chocolate chip
         [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
-    ]
+    ],
     [ //q7 values
         [1, 0, 2, 0, 1, 3, 0], // physical planner,
         [2, 0, 3, 0, 1, 0, 2], // calendar on the wall,
