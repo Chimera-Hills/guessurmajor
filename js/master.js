@@ -25,18 +25,18 @@ var tempStats = userStats; //Holds stat increases relating to user selection
 
 // Array for questions
 var questionArray =	[															
-    "What's your favorite color from a rainbow?", 	// q1
-    "What's your star sign?", // q2
-    "What's your favorite season?", // q3
-    "What's your hobby?", // q4
-    "How do you like your coffee?", // q5
-    "What's your favorite type of bagel?", // q6
-    "What's your preferred method of to-do list?", //q7
-    "Do you prefer to read a book or watch a movie?", //q8
-    "When you're assigned a long-term project, do you start right away or wait?", //q9
-    "What is your best memory from your childhood?", //q10
-    "Are you a morning person or a night owl?", //q11
-    "Are you organized or do you prefer a more flexible approach?" //q12
+    "1. What's your favorite color from a rainbow?", 	// q1
+    "2. What's your star sign?", // q2
+    "3. What's your favorite season?", // q3
+    "4. What's your hobby?", // q4
+    "5. How do you like your coffee?", // q5
+    "6. What's your favorite type of bagel?", // q6
+    "7. What's your preferred method of to-do list?", //q7
+    "8. Do you prefer to read a book or watch a movie?", //q8
+    "9. When you're assigned a long-term project, do you start right away or wait?", //q9
+    "10. What is your best memory from your childhood?", //q10
+    "11. Are you a morning person or a night owl?", //q11
+    "12. Are you organized or do you prefer a more flexible approach?" //q12
 ];
 
 // Array for answers
