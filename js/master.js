@@ -244,10 +244,18 @@ function initText(question) {
     $("#answers").html(answerSelection); // set answer text
 
     // Apply event handlers only to the buttons within the answers container
-    $("#answers button").each(function () {
-        $(this).on("click", function () {
+    $("#answers button").on("click", function () {
+        try {
             playSound(CLICK_SOUND);
-        });
+        } catch(error) {
+            handleException(error);
+        }
+        const index = $(this).data('index');
+        setAnswer(index);
+    });
+
+    // Apply event handlers only to the buttons within the answers container
+    $("#answers button").each(function () {
         handleMouseEvents($(this), "buttonHover", "buttonClick");
     });
 }
@@ -407,19 +415,31 @@ handleMouseEvents($(".icon"), "iconHover", "iconClick");
 // Tutorial
 
 $("#tutorial-button").click(function () {
-    playSound(CLICK_SOUND);
+    try {
+        playSound(CLICK_SOUND);
+    } catch(error) {
+        handleException(error);
+    }
     $("#tutorial-screen").removeClass("hide");
 });
 
 $("#tutorial-exit").click(function () {
-    playSound(CLICK_SOUND);
+    try {
+        playSound(CLICK_SOUND);
+    } catch(error) {
+        handleException(error);
+    }
     $("#tutorial-screen").addClass("hide");
 });
 
 // Play
 
 $("#play").click(function () {
-    playSound(CLICK_SOUND);
+    try {
+        playSound(CLICK_SOUND);
+    } catch(error) {
+        handleException(error);
+    }
     // Show loading screen
     loadingScreen();
     setTimeout(function () {
@@ -434,6 +454,11 @@ $("#setting-icon").hide()
 // Menu
 
 $("#menu-icon").click(function () {
+    try {
+        playSound(CLICK_SOUND);
+    } catch(error) {
+        handleException(error);
+    }
     $("#setting-icon").fadeToggle("slow");
 });
 
