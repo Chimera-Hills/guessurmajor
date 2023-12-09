@@ -331,7 +331,7 @@ function displayResults(personality) {
                 break;
                 
             case 2:	// Art History Major
-                printResult.text(`You are a ${resultArray[2].major}!`);
+                printResult.text(`You are an ${resultArray[2].major}!`);
                 printDesc.text(`${resultArray[2].desc}`);
                 break;
                 
