@@ -213,13 +213,15 @@ quizButton.on("click", changeState); //Add click event listener to main button
 function changeState() {								
     
     updatePersonality(); 	//Adds the values of the tempStats to the userStats										
-    
-    if (quizActive) {	
-        // True while the user has not reached the end of the quiz
-        initText(questionState); //sets up next question based on user's progress through quiz
-        questionState++; //advances progress through quiz
-    } else {
-        setResults(); //runs set up for result page
+    try {
+        if (quizActive) {
+            initText(questionState);
+            questionState++;
+        } else {
+            setResults();
+        }
+    } catch (error) {
+        handleException(error);
     }
 }
 
@@ -230,9 +232,12 @@ function initText(question) {
     var answerSelection = ""; //text variable containting HTML code for the radio buttons' content
     
     /* Creates radio buttons based on user progress through the quiz - current 'id' generation is not w3c compliant*/
-    
-    for (i = 0; i < answerArray[question].length; i++) {		
-        answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}' class='choices'>${answerArray[question][i]}</button></li>`;
+    try {
+        for (i = 0; i < answerArray[question].length; i++) {		
+            answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}' class='choices'>${answerArray[question][i]}</button></li>`;
+        };
+    } catch (error) {
+        handleException(error);
     }
     
     $("#questions").html(questionArray[question]); // set question text
@@ -247,89 +252,107 @@ function initText(question) {
 /* This function is called when a user selects an answer, NOT when answer is submitted */
 
 function setAnswer(input) {
-    for (let i = 0; i < tempStats.length; i++) {
-        tempStats[i] += answerValues[questionState - 1][input][i];
-    }	//selects personality values based on user selection 
-    console.log(tempStats); // debug
-    if (questionState < questionArray.length) {
-        changeState();
-    } else {
-        // All questions answered - QUESTION TIME IS OVER!
-        quizActive = false;
-        changeState();
+    try {
+        for (let i = 0; i < tempStats.length; i++) {
+            tempStats[i] += answerValues[questionState - 1][input][i];
+        }	//selects personality values based on user selection 
+
+        console.log(tempStats); // debug
+
+        if (questionState < questionArray.length) {
+            changeState();
+        } else {
+            // All questions answered - QUESTION TIME IS OVER!
+            quizActive = false;
+            changeState();
+        }
+    } catch (error) {
+        handleException(error);
     }
 }
 
 // Adds the values of the tempStats to the userStats based on user selection
 
 function updatePersonality() {
-    
-    for (i = 0; i < userStats.length ; i++) {
-        userStats[i] += tempStats[i];
+    try {
+        for (i = 0; i < userStats.length ; i++) {
+            userStats[i] += tempStats[i];
+        }
+    } catch (error) {
+        handleException(error);
     }
 }
 
 // Determines the highest personality value
 
 function setResults() {
-    
-    var highestStatPosition = 0;	//highest stat defaults as Literature Major
-    
-    /* This statement loops through all personality stats and updates highestStatPosition based on a highest stat */
-    
-    for (i = 1 ; i < userStats.length; i++) {
-        
-        if (userStats[i] > userStats[highestStatPosition]) {
-            highestStatPosition = i;
-        }
-    }
-    
-    /* Hides the quiz content, shows results content */
-    loadingScreen();
-    quiz.addClass("hide");
+    try {
+        var highestStatPosition = 0; //highest stat defaults as Literature Major
 
-    displayResults(highestStatPosition); //passes the index value of the highest stat discovered
+         /* This statement loops through all personality stats and updates highestStatPosition based on a highest stat */
+        for (var i = 1; i < userStats.length; i++) {
+            if (userStats[i] > userStats[highestStatPosition]) {
+                highestStatPosition = i;
+            }
+        }
+
+        /* Hides the quiz content, shows results content */
+        loadingScreen();
+        quiz.addClass("hide");
+
+        displayResults(highestStatPosition); //passes the index value of the highest stat discovered
+    } catch (error) {
+        handleException(error);
+    }
 }
 
 function displayResults(personality) {
-    setTimeout(function () {
-        results.removeClass("hide");
-    }, 800)
-    switch (personality) {
-        case 0:	// Literature Major
-            printResult.text(`${resultArray[0].major}`);
-            printDesc.text(`${resultArray[0].desc}`);
-            break;
-            
-        case 1:	// Film Major
-            printResult.text(`${resultArray[1].major}`);
-            printDesc.text(`${resultArray[1].desc}`);
-            break;
-            
-        case 2:	// Art History Major
-            printResult.text(`${resultArray[2].major}`);
-            printDesc.text(`${resultArray[2].desc}`);
-            break;
-            
-        case 3:	// Computer Science Major
-            printResult.text(`${resultArray[3].major}`);
-            printDesc.text(`${resultArray[3].desc}`);
-            break;
-            
-        case 4:	// Music Major
-            printResult.text(`${resultArray[4].major}`);
-            printDesc.text(`${resultArray[4].desc}`);
-            break;
-            
-        case 5:	// Biology Major
-            printResult.text(`${resultArray[5].major}`);
-            printDesc.text(`${resultArray[5].desc}`);
-            break;
-            
-        default: 
-            console.log("Bleh");
-
+    try {
+        setTimeout(function () {
+            results.removeClass("hide");
+        }, 800)
+        switch (personality) {
+            case 0:	// Literature Major
+                printResult.text(`${resultArray[0].major}`);
+                printDesc.text(`${resultArray[0].desc}`);
+                break;
+                
+            case 1:	// Film Major
+                printResult.text(`${resultArray[1].major}`);
+                printDesc.text(`${resultArray[1].desc}`);
+                break;
+                
+            case 2:	// Art History Major
+                printResult.text(`${resultArray[2].major}`);
+                printDesc.text(`${resultArray[2].desc}`);
+                break;
+                
+            case 3:	// Computer Science Major
+                printResult.text(`${resultArray[3].major}`);
+                printDesc.text(`${resultArray[3].desc}`);
+                break;
+                
+            case 4:	// Music Major
+                printResult.text(`${resultArray[4].major}`);
+                printDesc.text(`${resultArray[4].desc}`);
+                break;
+                
+            case 5:	// Biology Major
+                printResult.text(`${resultArray[5].major}`);
+                printDesc.text(`${resultArray[5].desc}`);
+                break;
+                
+            default: 
+                console.log("Bleh");
+        }
+    } catch (error) {
+        handleException(error);
     }
+    
+}
+
+function handleException(error) {
+    console.error("An error occurred:", error.message);
 }
 
 // Loading Screen
@@ -381,16 +404,31 @@ handleMouseEvents($(".icon"), "iconHover", "iconClick");
 // Tutorial
 
 $("#tutorial-button").click(function () {
+    var sound = new Howl({
+        src: ['sounds/click.mp3'],
+        volume: 1
+    })
+    sound.play()
     $("#tutorial-screen").removeClass("hide");
 });
 
 $("#tutorial-exit").click(function () {
+    var sound = new Howl({
+        src: ['sounds/click.mp3'],
+        volume: 1
+    })
+    sound.play()
     $("#tutorial-screen").addClass("hide");
 });
 
 // Play
 
 $("#play").click(function () {
+    var sound = new Howl({
+        src: ['sounds/click.mp3'],
+        volume: 1
+    })
+    sound.play()
     // Show loading screen
     loadingScreen();
     setTimeout(function () {
@@ -407,6 +445,15 @@ $("#setting-icon").hide()
 $("#menu-icon").click(function () {
     $("#setting-icon").fadeToggle("slow");
 });
+
+// Quiz buttons
+$("button").on("click", function() {
+    var sound = new Howl({
+        src: ['sounds/click.mp3'],
+        volume: 1
+    })
+    sound.play()
+})
 
 // Sound effects
 
