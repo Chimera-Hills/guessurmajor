@@ -4,14 +4,18 @@ Author(s): Kevin Hong, Jess Brass, Juliet Montel, Michelle Wang
 Date: 22 November, 2023
 */
 
-// Borrowed some code from https://codepen.io/paigeellenstark/pen/MVGYWO?editors=0010
+// Borrowed some template code for personality test from https://codepen.io/paigeellenstark/pen/MVGYWO?editors=0010
 
-// Variables
+// Constants and variables
 
-var questionState = 0;	// Keeps track of user's place in quiz
-var quizActive = true;	// True until last question is answered
+// Define sound file paths as constants
+const CLICK_SOUND = 'sounds/click.mp3';
+const RESULT_SOUND = 'sounds/result.mp3';
 
-var userStats =	[
+let questionState = 0;	// Keeps track of user's place in quiz
+let quizActive = true;	// True until last question is answered
+
+let userStats =	[
     0,	// Literature Major
     0, 	// Film Major
     0, 	// Art History Major 
@@ -21,10 +25,18 @@ var userStats =	[
     0   // Psychology Major
 ];
 
-var tempStats = userStats; //Holds stat increases relating to user selection
+let tempStats = userStats; // Holds stat increases relating to user selection
+
+// Shortcuts
+
+const results = $("#results-screen");
+const quiz = $("#questions-screen");
+const printResult = $("#top-score");
+const printDesc = $("#score-desc");
+const characterImage = $("#character-image");
 
 // Array for questions
-var questionArray =	[															
+const questionArray =	[															
     "1. What's your favorite color from a rainbow?", 	// q1
     "2. What's your star sign?", // q2
     "3. What's your favorite season?", // q3
@@ -40,7 +52,7 @@ var questionArray =	[
 ];
 
 // Array for answers
-var answerArray = [ 
+const answerArray = [ 
     [ // q1 answers
         "red",
         "orange",
@@ -143,7 +155,7 @@ var answerArray = [
 // Array of stat increments for each answer for every question
 // Literature | Film | Art History | CompSci | Music | Biology | Psychology
 // Template model to copy + paste: [ 0, 0, 0, 0, 0, 0, 0 ]
-var answerValues = [ 
+const answerValues = [ 
     [ // q1 values
         [ 0, 0, 3, 2, 1, 0, 0 ], // red
         [ 3, 2, 1, 0, 0, 0, 0 ], // orange
@@ -203,13 +215,13 @@ var answerValues = [
         [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
     ],
     [ //q7 values
-        [ 1, 0, 2, 0, 1, 3, 0 ], // physical planner,
-        [ 2, 0, 3, 0, 1, 0, 2 ], // calendar on the wall,
-        [ 2, 3, 0, 0, 1, 0, 2 ], // sticky notes,
-        [ 0, 2, 0, 3, 1, 1, 0 ], // virtual planner/calendar,
-        [ 3, 1, 2, 0, 0, 0, 2 ], // bullet journal,
-        [ 2, 3, 0, 0, 1, 0, 2 ], // the notes app,
-        [ 0, 1, 0, 3, 0, 0, 2 ], // my brain,
+        [ 1, 0, 2, 0, 1, 3, 0 ], // physical planner
+        [ 2, 0, 3, 0, 1, 0, 2 ], // calendar on the wall
+        [ 2, 3, 0, 0, 1, 0, 2 ], // sticky notes
+        [ 0, 2, 0, 3, 1, 1, 0 ], // virtual planner/calendar
+        [ 3, 1, 2, 0, 0, 0, 2 ], // bullet journal
+        [ 2, 3, 0, 0, 1, 0, 2 ], // the notes app
+        [ 0, 1, 0, 3, 0, 0, 2 ], // my brain
         [ 0, 2, 0, 0, 0, 1, 3 ] // all of the above
 
     ],
@@ -222,30 +234,30 @@ var answerValues = [
         [ 0, 1, 0, 3, 2, 3, 1 ], // wait until deadline
     ],
     [ //q10 values
-        [ 0, 3, 2, 0, 1, 1, 0 ], // family vacations,
-        [ 2, 0, 0, 2, 3, 0, 0 ], // birthday celebrations,
-        [ 0, 1, 3, 1, 2, 3, 1 ], // field trips,
-        [ 1, 0, 0, 3, 2, 0, 1 ], // playing with friends,
-        [ 1, 0, 1, 0, 3, 0, 1 ], // special holidays,
-        [ 3, 2, 0, 2, 1, 2, 0 ], // learning new skills,
-        [ 2, 0, 1, 0, 3, 0, 3 ], // family gatherings,
+        [ 0, 3, 2, 0, 1, 1, 0 ], // family vacations
+        [ 2, 0, 0, 2, 3, 0, 0 ], // birthday celebrations
+        [ 0, 1, 3, 1, 2, 3, 1 ], // field trips
+        [ 1, 0, 0, 3, 2, 0, 1 ], // playing with friends
+        [ 1, 0, 1, 0, 3, 0, 1 ], // special holidays
+        [ 3, 2, 0, 2, 1, 2, 0 ], // learning new skills
+        [ 2, 0, 1, 0, 3, 0, 3 ], // family gatherings
         [ 0, 3, 0, 0, 0, 3, 2 ] // camping adventures
     ],
     [ //q11 values
-        [ 3, 2, 3, 0, 0, 0, 3 ], // morning person,
+        [ 3, 2, 3, 0, 0, 0, 3 ], // morning person
         [ 0, 1, 0, 3, 3, 3, 0 ] // night owl
     ],
     [ //q12 values
-        [ 3, 2, 3, 1, 0, 3, 0 ], // highly organized,
-        [ 2, 3, 0, 2, 0, 0, 1 ], // moderately organized,
-        [ 1, 2, 2, 3, 1, 1, 2 ], // balanced mix of both,
-        [ 0, 1, 0, 2, 2, 0, 3 ], // somewhat flexible,
+        [ 3, 2, 3, 1, 0, 3, 0 ], // highly organized
+        [ 2, 3, 0, 2, 0, 0, 1 ], // moderately organized
+        [ 1, 2, 2, 3, 1, 1, 2 ], // balanced mix of both
+        [ 0, 1, 0, 2, 2, 0, 3 ], // somewhat flexible
         [ 0, 0, 1, 1, 3, 3, 2 ] // highly flexible
     ],
 ]
 
 // Array for results
-var resultArray = [
+const resultArray = [
     {
         major: "Literature Major",
         desc: "So you called yourself a bookworm when you were a kid? And you would probably take online quizzes about what your patronus was. Now you're in college and English was always your best subject so you've decided to be a Literature major. How's it going? Does Shakespeare finally make sense?"
@@ -276,124 +288,107 @@ var resultArray = [
     },
 ]
 
-// Shortcuts
-
-var results = $("#results-screen");
-var quiz = $("#questions-screen");
-var printResult = $("#top-score");
-var printDesc = $("#score-desc");
-// var quizButton = $(".quiz-button");
-var characterImage = $("#character-image");
-
-/* var results = document.getElementById("results");
-var quiz = document.getElementById("questions-screen");
-var body = document.body.style;
-var printResult = document.getElementById("topScore");
-var buttonElement = document.getElementById("quiz-button"); */
-
 // Functions
 
-/* Scraped code because I don't think it does anything.
-try {
-    quizButton.on("click", changeState); //Add click event listener to main button
-} catch (error) {
-    handleException(error);
-*/
-
-
 // Progresses the user through the quiz
-
 function changeState() {								
-    
-    updatePersonality(); 	//Adds the values of the tempStats to the userStats										
-    try {
+    // Add the values of temporary statistics to user statistics
+    updatePersonality();	
+
+    try { // Check if the quiz is still active
         if (quizActive) {
+            // If active, initialize text for the current question state
             initText(questionState);
+
+            // Move to the next question state
             questionState++;
         } else {
+            // If not active, set the results as the quiz is completed
             setResults();
         }
-    } catch (error) {
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
 }
 
 // Determines the question and answer content based on user progress through the quiz
-
-function initText(question) {							
+function initText(question) {	
+    // Initialize an empty string to store HTML content for answer selections						
+    let answerSelection = "";
     
-    var answerSelection = ""; //text variable containting HTML code for the radio buttons' content
-    
-    /* Creates radio buttons based on user progress through the quiz - current 'id' generation is not w3c compliant*/
-    try {
+    try { // Iterate through the answers for the current question
         for (i = 0; i < answerArray[question].length; i++) {		
+            // Concatenate HTML code for each answer button
             answerSelection += `<li><button class='quiz-button' onClick='setAnswer(${i})' id='${answerArray[question][i]}' class='choices'>${answerArray[question][i]}</button></li>`;
         };
-    } catch (error) {
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
-    
-    $("#questions").html(questionArray[question]); // set question text
-    $("#answers").html(answerSelection); // set answer text
 
-    // Apply event handlers only to the buttons within the answers container
+     // Set the question text based on the current question state
+    $("#questions").html(questionArray[question]);
+
+    // Set the answer options using the concatenated HTML content
+    $("#answers").html(answerSelection);
+
+     // Apply mouse event handlers to each button within the answers container
     $("#answers button").each(function () {
         handleMouseEvents($(this), "buttonHover", "buttonClick");
     });
 }
 
-/* This function is called when a user selects an answer, NOT when answer is submitted */
-
+// Handles user's answer selection and quiz progression
 function setAnswer(input) {
-    try {
+    try { // Iterate through each element in tempStats and update it based on user's answer
         for (let i = 0; i < tempStats.length; i++) {
             tempStats[i] += answerValues[questionState - 1][input][i];
-        }	//selects personality values based on user selection 
-
-        console.log(tempStats); // debug
-        console.log(userStats);
-
-        if (questionState < questionArray.length) {
-            changeState();
-        } else {
-            // All questions answered - QUESTION TIME IS OVER!
-            quizActive = false;
-            changeState();
         }
-    } catch (error) {
+
+        // Log the current state of tempStats and accumulated userStats
+        console.log(`Question ${questionState}: ${tempStats}`);
+        console.log(`Accumulated: ${userStats}`);
+
+        // Check if there are more questions remaining
+        if (questionState < questionArray.length) {
+            changeState(); // If yes, move to the next question state
+        } else { // All questions answered - QUESTION TIME IS OVER!
+            quizActive = false; // If all questions are answered, mark the quiz as not active
+            changeState(); // Trigger the function to handle the end of the quiz
+        }
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
 }
 
-// Adds the values of the tempStats to the userStats based on user selection
-
+// Updates the user's personality stats based on temporary stats
 function updatePersonality() {
-    try {
-        for (i = 0; i < userStats.length ; i++) {
+    try { // Iterate through each element in userStats and update with corresponding tempStats value
+        for (let i = 0; i < userStats.length ; i++) {
             userStats[i] += tempStats[i];
         }
-        tempStats = [0, 0, 0, 0, 0, 0, 0]; // Initialize a stat reset for temporary stats after appending new information to user stats
-    } catch (error) {
+
+        // Reset tempStats to zeros after updating userStats
+        tempStats = [0, 0, 0, 0, 0, 0, 0];
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
 }
 
 // Determines the highest personality value
-
 function setResults() {
     try {
-        var highestStatPosition = 0; //highest stat defaults as Literature Major
-        var sortedStats = []; // Array to store the sorted stats
+        let highestStatPosition = 0; // Initialize highestStatPosition as the default index for Literature Major
+        let sortedStats = []; // Create an empty array to store sorted stats with index and value
 
-         /* This statement loops through all personality stats and updates highestStatPosition based on a highest stat */
-        for (var i = 1; i < userStats.length; i++) {
+        // Loop through personality stats to find the highestStatPosition
+        for (let i = 1; i < userStats.length; i++) {
             if (userStats[i] > userStats[highestStatPosition]) {
                 highestStatPosition = i;
             }
         }
 
         // Populate sortedStats array with original index and value
-        for (var i = 0; i < userStats.length; i++) {
+        for (let i = 0; i < userStats.length; i++) {
             sortedStats.push({ index: i, value: userStats[i] });
         }
 
@@ -402,50 +397,61 @@ function setResults() {
             return b.value - a.value;
         });
 
-        console.log("Sorted ", sortedStats);
-        /* Hides the quiz content, shows results content */
+        // Display final accumulated stats and sorted stats for debugging
+        console.log(`Final accumulated stats: ${userStats}`);
+        console.log("Final stats sorted:", sortedStats);
+
+        // Hide quiz content, show results content
         loadingScreen();
         quiz.addClass("hide");
 
-        displayResults(highestStatPosition); //passes the index value of the highest stat discovered
+        // Display results based on the highestStatPosition
+        displayResults(highestStatPosition); 
+
+        // Display specific parameters for percentages
+        console.log("Specific parameters for percentages:");
 
         // Update percentBars in descending order
-        for (var i = 1; i < 5; i++) {
-            var percentage = (sortedStats[i].value / userStats[highestStatPosition]) * 100;
+        for (let i = 1; i < 5; i++) { // Calculate percentage for the current stat
+            let percentage = (sortedStats[i].value / userStats[highestStatPosition]) * 100;
 
-            // Check if the percentage is 100 and set it to 90%
+            // Check if the percentage is 100 and set it to 99.9%
             if (percentage === 100) {
                 percentage = 99.9;
             }
             
+            // Move and update the percentBar element
             move("percentBar" + (i + 1), percentage);
             $("#percentBar" + (i + 1)).html(percentage.toFixed(1) + "%");
-            console.log("percentBar" + (i + 1), percentage);
 
             // Get the major name from resultArray using the index from sortedStats
-            var majorIndex = sortedStats[i].index;
-            var majorName = resultArray[majorIndex].major;
+            let majorIndex = sortedStats[i].index;
+            let majorName = resultArray[majorIndex].major;
 
             // Update the corresponding span element with the major name
             $("#percentMajor" + (i + 1)).html(majorName);
+            console.log(`${majorName}: ${percentage}`); // For debugging purposes
         }
-    } catch (error) {
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
 }
 
+// Display results based on the user's personality
 function displayResults(personality) {
-    try {
-        console.log(tempStats);
-        console.log(userStats);
-        setTimeout(function () {
+    try { // Delayed execution to show results after a brief pause
+        setTimeout(function () { 
+            // Remove "hide" class from results and play result sound
             results.removeClass("hide");
             playSound(RESULT_SOUND);
         }, 800)
+
+        // Switch statement to handle different personalities
+        // Styling is done in JS for width and margin because the image assets are all in different sizes
         switch (personality) {
             case 0:	// Literature Major
                 printResult.text(`You are a ${resultArray[0].major}!`);
-                characterImage.attr("src", "./img/lit-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                characterImage.attr("src", "./img/lit-asset.png").css({
                     "width": "22.5%",
                     "margin-right": "7.5%"
                 });
@@ -454,7 +460,7 @@ function displayResults(personality) {
                 
             case 1:	// Film Major
                 printResult.text(`You are a ${resultArray[1].major}!`);
-                characterImage.attr("src", "./img/film-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                characterImage.attr("src", "./img/film-asset.png").css({
                     "width": "18.5%",
                     "margin-right": "7.5%"
                 });
@@ -468,7 +474,7 @@ function displayResults(personality) {
                 
             case 3:	// Computer Science Major
                 printResult.text(`You are a ${resultArray[3].major}!`);
-                characterImage.attr("src", "./img/compSci-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                characterImage.attr("src", "./img/compSci-asset.png").css({
                     "width": "30%",
                     "margin-right": "2.5%"
                 });
@@ -477,7 +483,7 @@ function displayResults(personality) {
                 
             case 4:	// Music Major
                 printResult.text(`You are a ${resultArray[4].major}!`);
-                characterImage.attr("src", "./img/music-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
+                characterImage.attr("src", "./img/music-asset.png").css({
                     "width": "27.5%",
                     "margin-right": "5%"
                 });
@@ -494,58 +500,77 @@ function displayResults(personality) {
                 printDesc.text(`${resultArray[6].desc}`);
                 break;
 
-            default: 
+            default: // Log a message if the personality is not recognized
                 console.log("Bleh");
         }
-    } catch (error) {
+    } catch (error) { // Handle any exceptions that may occur during the process
         handleException(error);
     }
-    
 }
 
-// Percentage Bars
+// Animate the progress bar by increasing width
 function move(barId, widthValue) {
-    var i = 0;
-    var elem = $("#" + barId); // Dynamically select the element by ID
+    // Initialize variables
+    let i = 0;
+    let elem = $("#" + barId); // Dynamically select the element by ID
+
+    // Check if animation is not already in progress
     if (i == 0) {
         i = 1;
-        var width = 1;
-        var id = setInterval(frame, 25);
-        function frame() {
+        let width = 1;
+        let id = setInterval(frame, 25); // Set interval for the animation frame
+
+        // Animation frame function
+        function frame() { // Check if the width has reached the target value
             if (width >= widthValue) {
+                // Stop the animation
                 clearInterval(id);
                 i = 0;
-            } else {
+            } else { // Increment the width and update the element's style
                 width++;
-                elem.css("width", width + "%"); // Update the width using jQuery
+                elem.css("width", width + "%");
             }
         }
     }
 }
 
-// Function for handling errors
-
-function handleException(error, additionalInfo) {
-    console.error("An error occurred:", error.message, error);
-    console.error("Additional information:", additionalInfo);
+// Error handler
+function handleException(error) {
+    if (error instanceof TypeError) {
+        console.error("TypeError occurred:", error.message);
+        // Handle TypeError-specific actions here
+    } else if (error instanceof ReferenceError) {
+        console.error("ReferenceError occurred:", error.message);
+        // Handle ReferenceError-specific actions here
+    } else if (error instanceof SyntaxError) {
+        console.error("SyntaxError occurred:", error.message);
+        // Handle SyntaxError-specific actions here
+    } else if (error instanceof RangeError) {
+        console.error("RangeError occurred:", error.message);
+        // Handle RangeError-specific actions here
+    } else if (error instanceof MyCustomError) {
+        console.error("MyCustomError occurred:", error.message);
+        // Handle MyCustomError-specific actions here
+    } else {
+        // Generic error handling for any other error types
+        console.error("An error occurred:", error.message, error.stack, error);
+    }
 }
-
 
 // Loading Screen
-
 const loadingScreen = function () {
-    // Simulate loading delay (replace this with your actual loading logic)
+    // Simulate loading delay
     $("#loading-screen").fadeIn("slow");
     setTimeout(function () {
-        // Hide the loading screen when the loading is complete
+        // Set a timeout to hide the loading screen when the loading is complete
         $("#loading-screen").fadeOut("slow");
-    }, 750); // Replace 500 with the desired delay in milliseconds
+    }, 750); // Set timer to 750 milliseconds.
 }
 
-// Call the loading screen function when the document is ready
-try {
-    $(document).ready(loadingScreen);
-} catch (error) {
+// Execute the loading screen function when the document is ready
+try { // Use jQuery to execute the loadingScreen function when the document is ready
+    $(document).ready(loadingScreen); // Call the loading screen function
+} catch (error) { // Handle any exceptions that may occur during execution
     handleException(error);
 }
 
@@ -562,9 +587,9 @@ function handleMouseEvents(element, hoverClass, clickClass) {
         $(this).removeClass(hoverClass);
     });
 
-    // Change appearance on mouse click
+    // Change appearance and add clicking sound on mouse click
     element.on("mousedown", function () {
-        try {
+        try { // Play the clicking sound whenever you click the button
             playSound(CLICK_SOUND);
         } catch(error) {
             handleException(error);
@@ -587,27 +612,31 @@ handleMouseEvents($("button"), "buttonHover", "buttonClick");
 // Apply the function to icons
 handleMouseEvents($(".icon"), "iconHover", "iconClick");
 
-// Tutorial
-
+// Show the tutorial when tutorial button is clicked
 $("#tutorial-button").click(function () {
     $("#tutorial-screen").removeClass("hide");
 });
 
+// Hide the tutorial when tutorial button is clicked
 $("#tutorial-exit").click(function () {
     $("#tutorial-screen").addClass("hide");
 });
 
-// Play
-
+// Attach a click event handler to the element with the ID "play"
 $("#play").click(function () {
     // Show loading screen
     loadingScreen();
-    setTimeout(function () {
+    setTimeout(function () { // Set a timeout to delay the execution of the following code
+        // Hide the landing page and show the questions screen
         $("#questions-screen").removeClass("hide");
         $("#landing-page").addClass("hide");
+
+        // Change the quiz state
         changeState();
-        console.log(tempStats);
-        console.log(userStats);
+
+        // Display empty stat arrays for incrementing and accumulating points
+        console.log(`Empty stat array to increment: ${tempStats}`);
+        console.log(`Empty stat array to accumulate points into: ${userStats}`);
     }, 700)
 });
 
@@ -619,15 +648,9 @@ $("#menu-icon").click(function () {
     $("#setting-icon").fadeToggle("slow");
 });
 
-// Sound effects
-
-// Define sound file paths as constants
-const CLICK_SOUND = 'sounds/click.mp3';
-const RESULT_SOUND = 'sounds/result.mp3';
-
 // Function to play a sound
 function playSound(soundFile) {
-    var sound = new Howl({
+    let sound = new Howl({
         src: [soundFile],
         volume: 1
     });
