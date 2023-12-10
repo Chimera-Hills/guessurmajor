@@ -403,7 +403,7 @@ function setResults() {
 
         // Hide quiz content, show results content
         loadingScreen();
-        quiz.addClass("hide");
+        quiz.toggleClass("hide");
 
         // Display results based on the highestStatPosition
         displayResults(highestStatPosition); 
@@ -614,15 +614,40 @@ handleMouseEvents($(".icon"), "iconHover", "iconClick");
 
 handleMouseEvents($("#home-icon"), "iconHover")
 
-// Show the tutorial when tutorial button is clicked
 $(".tutorial").click(function () {
-    $("#tutorial-screen").toggleClass("hide");
+    // Check if #settings-screen is visible, and if so, hide it
+    if (!$("#settings-screen").hasClass("hide")) {
+        $("#settings-screen").toggleClass("hide");
+        setTimeout(function(){
+            $("#tutorial-screen").toggleClass("hide");
+        }, 650)
+    } else {
+        $("#tutorial-screen").toggleClass("hide");
+    }
 });
 
 // Hide the tutorial when tutorial button is clicked
 $("#tutorial-exit").click(function () {
     $("#tutorial-screen").toggleClass("hide");
 });
+
+
+$("#setting-icon").click(function () {
+    // Check if #tutorial-screen is visible, and if so, hide it
+    if (!$("#tutorial-screen").hasClass("hide")) {
+        $("#tutorial-screen").toggleClass("hide");
+        setTimeout(function(){
+            $("#settings-screen").toggleClass("hide");
+        }, 650)
+    } else {
+        $("#settings-screen").toggleClass("hide");
+    }
+});
+
+$("#settings-exit").click(function () {
+    $("#settings-screen").toggleClass("hide");
+});
+
 
 // Attach a click event handler to the element with the ID "play"
 $("#play").click(function () {

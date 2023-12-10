@@ -2,7 +2,6 @@
 @import url('https://fonts.cdnfonts.com/css/ibm-selectric-manifold');
 @import url('https://fonts.cdnfonts.com/css/justy-three');
 @import url('https://fonts.cdnfonts.com/css/handwritten');
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
 
 /* Align elements to the center */
 body {
@@ -38,6 +37,45 @@ body {
     filter: drop-shadow(1px 1px 3px #49466e);
 }
 
+#settings-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    transform: translate(-50%, -50%);
+    color: #495057;
+    background-color: #f1faeef5;
+    border: solid 3px #CBC0D3;
+    box-shadow: 1px 1px 3px #49466e;
+    padding: 25px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
+}
+
+
+#settings-screen h2 {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 2em;
+}
+
+#settings-screen p {
+    font-family: 'Justy Three', sans-serif;
+    font-size: 1.10em;
+    text-indent: 5px;
+}
+
+#settings-exit {
+    cursor: pointer;
+    position: fixed;
+    top: 2.5%;
+    right: 5%;
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 2em;
+    user-select: none;
+}
+
 #tutorial-screen {
     position: fixed;
     top: 50%;
@@ -47,6 +85,7 @@ body {
     color: #495057;
     background-color: #f1faeef5;
     border: solid 3px #CBC0D3;
+    box-shadow: 1px 1px 3px #49466e;
     padding: 25px;
     border-radius: 1em;
     font-size: 1.5em;
@@ -66,7 +105,7 @@ body {
 
 #tutorial-exit {
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 2.5%;
     right: 5%;
     font-family: 'IBM Selectric Manifold', sans-serif;
@@ -352,6 +391,10 @@ button {
     width: 300px;
     height: 98px;
     overflow: visible;
+}
+
+.icon {
+    cursor: pointer;
 }
 
 .iconHover {
