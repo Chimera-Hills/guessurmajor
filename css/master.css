@@ -51,7 +51,7 @@ body {
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1003; /* Ensure the tutorial box appears on top of the button */
+    z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
 }
 
 #tutorial-screen h2 {
@@ -145,7 +145,7 @@ body {
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1001;
+    z-index: 1005;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 1px 3px #49466e;
     user-select: none;
@@ -181,7 +181,7 @@ body {
 #other-results {
     margin-left: 5%;
     width: 55%;
-    z-index: 1002; /* Adjust the z-index as needed */
+    z-index: 1006; /* Adjust the z-index as needed */
 }
 
 #other-results h3 {
