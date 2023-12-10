@@ -91,13 +91,17 @@ var answerArray = [
     ],
     [ // q6 answers
         "plain",
-        "blueberry",
         "onion",
-        "poppyseed",
-        "garlic",
+        "asiago",
         "sesame",
+        "jalapeño",
+        "blueberry",
         "chocolate",
-        "sourdough"
+        "poppyseed",
+        "whole wheat",
+        "pumpernickel",
+        "cinnamon raisin",
+        "everything"
     ],
     [ //q7 answers
         "physical planner",
@@ -145,46 +149,46 @@ var answerArray = [
 // Template model to copy + paste: [ 0, 0, 0, 0, 0, 0, 0 ]
 var answerValues = [ 
     [ // q1 values
-        [ 0, 0, 3, 2, 1, 0, 0 ], // red
-        [ 3, 2, 1, 0, 0, 0, 0 ], // orange
-        [ 2, 3, 0, 0, 0, 1, 1 ], // yellow
-        [ 0, 0, 0, 1, 2, 3, 2 ], // green
-        [ 1, 0, 0, 3, 0, 2, 0 ], // blue
-        [ 0, 1, 2, 0, 3, 0, 2 ] // violet
+        [ 0, 1, 3, 0, 1, 0, 0 ], // red
+        [ 3, 2, 0, 0, 0, 1, 0 ], // orange
+        [ 2, 3, 1, 0, 2, 0, 0 ], // yellow
+        [ 0, 0, 0, 0, 0, 3, 3 ], // green
+        [ 1, 0, 2, 3, 0, 2, 2 ], // blue
+        [ 0, 2, 0, 0, 3, 0, 0 ] // violet
     ],
     [ // q2 values
-        [ 2, 3, 0, 1, 0, 0, 0 ], // Capricorn
-        [ 0, 1, 2, 0, 2, 0, 3 ], // Aquarius
-        [ 0, 2, 3, 0, 1, 0, 1 ], // Pisces
-        [ 3, 2, 0, 0, 1, 0, 0 ], // Aries
-        [ 0, 1, 0, 2, 0, 3, 0 ], // Taurus
-        [ 2, 0, 1, 0, 3, 0, 2 ], // Gemini
-        [ 3, 0, 2, 0, 1, 0, 2 ], // Cancer
-        [ 1, 3, 0, 0, 2, 0, 0 ], // Leo
-        [ 0, 0, 0, 3, 1, 2, 1 ], // Virgo
-        [ 3, 0, 1, 0, 2, 0, 2 ], // Libra
-        [ 2, 0, 3, 0, 0, 1, 1 ], // Scorpio
-        [ 1, 2, 0, 0, 0, 3, 0 ] // Sagittarius
+        [ 1, 0, 0, 1, 0, 2, 0 ], // Capricorn
+        [ 0, 1, 1, 3, 0, 0, 2 ], // Aquarius
+        [ 0, 0, 2, 0, 3, 1, 0 ], // Pisces
+        [ 0, 3, 0, 2, 0, 0, 0 ], // Aries
+        [ 0, 0, 3, 0, 1, 2, 0 ], // Taurus
+        [ 3, 1, 0, 3, 2, 0, 1 ], // Gemini
+        [ 2, 0, 2, 0, 0, 3, 3 ], // Cancer
+        [ 1, 3, 1, 0, 3, 0, 0 ], // Leo
+        [ 0, 0, 0, 2, 0, 3, 2 ], // Virgo
+        [ 2, 2, 3, 0, 2, 0, 0 ], // Libra
+        [ 0, 0, 0, 0, 0, 1, 3 ], // Scorpio
+        [ 3, 2, 0, 1, 1, 0, 1 ] // Sagittarius
     ],
     [ // q3 values
-        [ 0, 3, 2, 0, 1, 0, 1 ], // Spring
-        [ 0, 0, 3, 0, 2, 1, 0 ], // Summer
-        [ 3, 1, 2, 0, 0, 0, 2 ], // Autumn
-        [ 0, 1, 0, 3, 0, 2, 3] // Winter
+        [ 1, 3, 2, 1, 2, 3, 1 ], // Spring
+        [ 0, 2, 0, 0, 3, 2, 0 ], // Summer
+        [ 3, 1, 3, 2, 1, 1, 2 ], // Autumn
+        [ 2, 0, 1, 3, 0, 0, 3 ] // Winter
     ],
     [ // q4 values
-        [ 0, 3, 2, 0, 0, 1, 0 ], // photography
-        [ 2, 0, 1, 0, 0, 3, 2 ], // gardening
-        [ 1, 2, 0, 0, 0, 3, 1 ], // cooking
-        [ 3, 0, 0, 0, 2, 1, 2 ], // reading/writing
-        [ 0, 0, 0, 3, 1, 2, 0 ], // gaming
-        [ 2, 0, 1, 0, 3, 0, 1 ], // singing
-        [ 0, 1, 2, 0, 3, 0, 2 ], // dancing
-        [ 0, 0, 0, 2, 3, 1, 1 ], // listening to music
-        [ 1, 0, 3, 0, 2, 0, 1 ], // drawing/painting
-        [ 0, 2, 0, 0, 1, 3, 0 ], // fishing
-        [ 0, 3, 1, 0, 0, 2, 2 ], // hiking
-        [ 0, 2, 0, 0, 1, 0, 3 ] // sports
+        [ 1, 3, 3, 1, 0, 1, 1 ], // photography
+        [ 0, 0, 0, 0, 0, 3, 0 ], // gardening
+        [ 2, 1, 1, 2, 1, 1, 1 ], // cooking
+        [ 3, 2, 1, 1, 2, 1, 3 ], // reading/writing
+        [ 0, 1, 0, 3, 1, 0, 0 ], // gaming
+        [ 0, 0, 0, 0, 3, 0, 2 ], // singing
+        [ 0, 0, 2, 0, 0, 0, 2 ], // dancing
+        [ 1, 0, 1, 1, 2, 0, 0 ], // listening to music
+        [ 2, 2, 2, 2, 1, 0, 1 ], // drawing/painting
+        [ 0, 0, 0, 0, 0, 2, 0 ], // fishing
+        [ 1, 1, 0, 0, 0, 2, 0 ], // hiking
+        [ 0, 0, 0, 0, 0, 0, 0 ] // sports
     ],
     [ // q5 values
         [ 3, 1, 0, 0, 0, 2, 1 ], // black, iced
@@ -193,14 +197,18 @@ var answerValues = [
         [ 0, 0, 3, 2, 1, 0, 1 ], // milky, hot
     ],
     [ // q6 values
-        [ 3, 0, 2, 0, 0, 1, 0 ], // plain
-        [ 0, 0, 3, 1, 2, 0, 1 ], // blueberry
-        [ 2, 3, 0, 0, 0, 1, 0 ], // onion
-        [ 0, 0, 2, 1, 3, 0, 2 ], // poppyseed
-        [ 0, 2, 0, 3, 1, 0, 1 ], // garlic
-        [ 0, 0, 1, 0, 2, 3, 2 ], // sesame
-        [ 1, 0, 0, 3, 0, 2, 0 ], // chocolate chip
-        [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
+        [ 0, 1, 0, 3, 1, 2, 0 ], // "plain",
+        [ 1, 2, 0, 1, 0, 1, 1 ], // "onion",
+        [ 0, 1, 3, 0, 0, 1, 0 ], // "asiago",
+        [ 3, 0, 1, 2, 1, 2, 0 ], // "sesame",
+        [ 0, 2, 0, 0, 0, 0, 2 ], // "jalapeño",
+        [ 0, 0, 1, 0, 3, 0, 2 ], // "blueberry",
+        [ 0, 0, 0, 0, 1, 0, 0 ], // "chocolate",
+        [ 2, 1, 2, 1, 0, 1, 1 ], // "poppyseed",
+        [ 2, 0, 0, 1, 0, 0, 0 ], // "whole wheat",
+        [ 1, 0, 2, 0, 0, 0, 0 ], // "pumpernickel",
+        [ 1, 0, 1, 0, 2, 0, 3 ], // "cinnamon raisin",
+        [ 0, 3, 0, 2, 2, 3, 1 ], // "everything"
     ],
     [ //q7 values
         [ 1, 0, 2, 0, 1, 3, 0 ], // physical planner,
@@ -214,33 +222,33 @@ var answerValues = [
 
     ],
     [ //q8 values 
-        [ 3, 0, 2, 0, 1, 3, 3 ], // read a book
-        [ 0, 3, 1, 3, 2, 0, 0 ], // watch a movie
+        [ 2, 0, 0, 0, 0, 2, 2 ], // read a book
+        [ 0, 2, 2, 2, 2, 0, 0 ], // watch a movie
     ],
     [ //q9 values
-        [ 3, 2, 3, 0, 1, 0, 2 ], // start right away
-        [ 0, 1, 0, 3, 2, 3, 1 ], // wait until deadline
+        [ 2, 0, 2, 0, 0, 2, 2 ], // start right away
+        [ 0, 2, 0, 2, 2, 0, 0 ], // wait until deadline
     ],
     [ //q10 values
-        [ 0, 3, 2, 0, 1, 1, 0 ], // family vacations,
-        [ 2, 0, 0, 2, 3, 0, 0 ], // birthday celebrations,
-        [ 0, 1, 3, 1, 2, 3, 1 ], // field trips,
-        [ 1, 0, 0, 3, 2, 0, 1 ], // playing with friends,
-        [ 1, 0, 1, 0, 3, 0, 1 ], // special holidays,
-        [ 3, 2, 0, 2, 1, 2, 0 ], // learning new skills,
-        [ 2, 0, 1, 0, 3, 0, 3 ], // family gatherings,
-        [ 0, 3, 0, 0, 0, 3, 2 ] // camping adventures
+        [ 3, 1, 0, 0, 0, 0, 0 ], // family vacations,
+        [ 0, 0, 2, 1, 3, 0, 2 ], // birthday celebrations,
+        [ 0, 2, 1, 0, 0, 3, 0 ], // field trips,
+        [ 1, 3, 0, 2, 0, 1, 0 ], // playing with friends,
+        [ 1, 1, 3, 0, 1, 0, 1 ], // special holidays,
+        [ 0, 0, 0, 3, 1, 1, 1 ], // learning new skills,
+        [ 0, 0, 1, 0, 2, 0, 3 ], // family gatherings,
+        [ 2, 0, 0, 1, 0, 2, 0 ] // camping adventures
     ],
     [ //q11 values
-        [ 3, 2, 3, 0, 0, 0, 3 ], // morning person,
-        [ 0, 1, 0, 3, 3, 3, 0 ] // night owl
+        [ 2, 0, 0, 0, 0, 2, 0 ], // morning person,
+        [ 0, 2, 1, 1, 1, 0, 2 ] // night owl
     ],
     [ //q12 values
-        [ 3, 2, 3, 1, 0, 3, 0 ], // highly organized,
-        [ 2, 3, 0, 2, 0, 0, 1 ], // moderately organized,
-        [ 1, 2, 2, 3, 1, 1, 2 ], // balanced mix of both,
-        [ 0, 1, 0, 2, 2, 0, 3 ], // somewhat flexible,
-        [ 0, 0, 1, 1, 3, 3, 2 ] // highly flexible
+        [ 2, 0, 0, 0, 0, 3, 0 ], // highly organized,
+        [ 3, 0, 3, 0, 1, 2, 3 ], // moderately organized,
+        [ 1, 3, 0, 1, 0, 1, 1 ], // balanced mix of both,
+        [ 0, 1, 2, 2, 3, 0, 2 ], // somewhat flexible,
+        [ 0, 2, 1, 3, 2, 0, 0 ] // highly flexible
     ],
 ]
 
@@ -282,7 +290,7 @@ var results = $("#results-screen");
 var quiz = $("#questions-screen");
 var printResult = $("#top-score");
 var printDesc = $("#score-desc");
-var quizButton = $(".quiz-button");
+// var quizButton = $(".quiz-button");
 var characterImage = $("#character-image");
 
 /* var results = document.getElementById("results");
@@ -383,6 +391,7 @@ function updatePersonality() {
 function setResults() {
     try {
         var highestStatPosition = 0; //highest stat defaults as Literature Major
+        var sortedStats = []; // Array to store the sorted stats
 
          /* This statement loops through all personality stats and updates highestStatPosition based on a highest stat */
         for (var i = 1; i < userStats.length; i++) {
@@ -391,11 +400,43 @@ function setResults() {
             }
         }
 
+        // Populate sortedStats array with original index and value
+        for (var i = 0; i < userStats.length; i++) {
+            sortedStats.push({ index: i, value: userStats[i] });
+        }
+
+        // Sort the stats array in descending order based on values
+        sortedStats.sort(function (a, b) {
+            return b.value - a.value;
+        });
+
+        console.log("Sorted ", sortedStats);
         /* Hides the quiz content, shows results content */
         loadingScreen();
         quiz.addClass("hide");
 
         displayResults(highestStatPosition); //passes the index value of the highest stat discovered
+
+        // Update percentBars in descending order
+        for (var i = 1; i < 5; i++) {
+            var percentage = (sortedStats[i].value / userStats[highestStatPosition]) * 100;
+
+            // Check if the percentage is 100 and set it to 90%
+            if (percentage === 100) {
+                percentage = 90;
+            }
+            
+            move("percentBar" + (i + 1), percentage);
+            $("#percentBar" + (i + 1)).html(percentage.toFixed(1) + "%");
+            console.log("percentBar" + (i + 1), percentage);
+
+            // Get the major name from resultArray using the index from sortedStats
+            var majorIndex = sortedStats[i].index;
+            var majorName = resultArray[majorIndex].major;
+
+            // Update the corresponding span element with the major name
+            $("#percentMajor" + (i + 1)).html(majorName);
+        }
     } catch (error) {
         handleException(error);
     }
@@ -413,7 +454,8 @@ function displayResults(personality) {
             case 0:	// Literature Major
                 printResult.text(`You are a ${resultArray[0].major}!`);
                 characterImage.attr("src", "./img/lit-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
-                    width: "20%",
+                    "width": "22.5%",
+                    "margin-right": "7.5%"
                 });
                 printDesc.text(`${resultArray[0].desc}`);
                 break;
@@ -421,7 +463,8 @@ function displayResults(personality) {
             case 1:	// Film Major
                 printResult.text(`You are a ${resultArray[1].major}!`);
                 characterImage.attr("src", "./img/film-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
-                    width: "17.5%",
+                    "width": "18.5%",
+                    "margin-right": "7.5%"
                 });
                 printDesc.text(`${resultArray[1].desc}`);
                 break;
@@ -434,7 +477,8 @@ function displayResults(personality) {
             case 3:	// Computer Science Major
                 printResult.text(`You are a ${resultArray[3].major}!`);
                 characterImage.attr("src", "./img/compSci-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
-                    width: "30%",
+                    "width": "30%",
+                    "margin-right": "2.5%"
                 });
                 printDesc.text(`${resultArray[3].desc}`);
                 break;
@@ -442,7 +486,8 @@ function displayResults(personality) {
             case 4:	// Music Major
                 printResult.text(`You are a ${resultArray[4].major}!`);
                 characterImage.attr("src", "./img/music-asset.png").css({ // Individual sizing bc they're all sort of different sizes >.>
-                    width: "27.5%",
+                    "width": "27.5%",
+                    "margin-right": "5%"
                 });
                 printDesc.text(`${resultArray[4].desc}`);
                 break;
@@ -466,8 +511,30 @@ function displayResults(personality) {
     
 }
 
+// Percentage Bars
+function move(barId, widthValue) {
+    var i = 0;
+    var elem = $("#" + barId); // Dynamically select the element by ID
+    if (i == 0) {
+        i = 1;
+        var width = 1;
+        var id = setInterval(frame, 25);
+        function frame() {
+            if (width >= widthValue) {
+                clearInterval(id);
+                i = 0;
+            } else {
+                width++;
+                elem.css("width", width + "%"); // Update the width using jQuery
+            }
+        }
+    }
+}
+
+// Function for handling errors
+
 function handleException(error, additionalInfo) {
-    console.error("An error occurred:", error.message);
+    console.error("An error occurred:", error.message, error);
     console.error("Additional information:", additionalInfo);
 }
 

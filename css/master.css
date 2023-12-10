@@ -160,6 +160,7 @@ body {
 #results-screen p {
     font-family: 'Handwritten', sans-serif;
     font-size: 1em;
+    width: 65%;
     margin-left: 1%;
     text-shadow: 1px 1px 2px #998ca3;
 }
@@ -173,6 +174,61 @@ body {
     height: auto;
     user-select: none;
     filter: drop-shadow(1px 1px 3px #998ca3);
+}
+
+#other-results {
+    margin-left: 5%;
+    width: 55%;
+    z-index: 1002; /* Adjust the z-index as needed */
+}
+
+#other-results h3 {
+    padding: .75%;
+    margin-block-end: .5em;
+    color: white;
+    background-color: #8e9aafcc;
+    border: solid 1px #4a4e69;
+    border-radius: 1em;
+    font-family: 'IBM Selectric Manifold', sans-serif;
+}
+
+#percentage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#percentage-list span {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-weight: bold;
+}
+
+.percentFont {
+    font-family: 'Handwritten', sans-serif;
+    text-shadow: 0px 0px 2px #a190ad;
+}
+
+#percentage-list li {
+    font-size: 1.25em; /* Adjust as needed */
+    margin-bottom: .5em; /* Adjust as needed */
+}
+
+.progressBar {
+    width: 100%;
+    margin-left: 1%;
+    border-radius: 1em;
+    border: solid 1px #c4b8cc;
+    background-color: #cbc0d3cc;
+    box-shadow: inset 1px 2px 5px #998ca3;
+    overflow: hidden;
+  }
+  
+.progressBar div {
+    width: 1%;
+    height: 30px;
+    border-radius: .15em;
+    box-shadow: 2px 0px 5px #998ca3;
+    background: linear-gradient(to right, #FEEAFA, #DEE2FF);
 }
 
 /* Button Appearance */
