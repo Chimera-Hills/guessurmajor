@@ -282,6 +282,7 @@ button {
     position: fixed;
     width: 300px;
     height: 98px;
+    z-index: 1004;
 }
 
 /* Changes appearance of button when mouse hovers over it */
@@ -307,7 +308,7 @@ button {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    z-index: 1003;
+    z-index: 1004;
 }
 
 .menu li a .menu-icon {
@@ -342,6 +343,7 @@ button {
     background-size: contain;
     background-repeat: no-repeat;
     filter: drop-shadow(1px 1px 3px #49466e);
+    z-index: 1004;
 }
   
 .open {
