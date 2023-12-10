@@ -293,11 +293,12 @@ var buttonElement = document.getElementById("quiz-button"); */
 
 // Functions
 
+/* Scraped code because I don't think it does anything.
 try {
     quizButton.on("click", changeState); //Add click event listener to main button
 } catch (error) {
     handleException(error);
-}
+*/
 
 
 // Progresses the user through the quiz
@@ -350,6 +351,7 @@ function setAnswer(input) {
         }	//selects personality values based on user selection 
 
         console.log(tempStats); // debug
+        console.log(userStats);
 
         if (questionState < questionArray.length) {
             changeState();
@@ -370,6 +372,7 @@ function updatePersonality() {
         for (i = 0; i < userStats.length ; i++) {
             userStats[i] += tempStats[i];
         }
+        tempStats = [0, 0, 0, 0, 0, 0, 0]; // Initialize a stat reset for temporary stats after appending new information to user stats
     } catch (error) {
         handleException(error);
     }
@@ -400,6 +403,9 @@ function setResults() {
 
 function displayResults(personality) {
     try {
+        console.log(tempStats);
+        console.log(userStats);
+        console.log(resultArray[highestStatPosition]);
         setTimeout(function () {
             results.removeClass("hide");
             playSound(RESULT_SOUND);
@@ -542,6 +548,8 @@ $("#play").click(function () {
         $("#questions-screen").removeClass("hide");
         $("#landing-page").addClass("hide");
         changeState();
+        console.log(tempStats);
+        console.log(userStats);
     }, 700)
 });
 
