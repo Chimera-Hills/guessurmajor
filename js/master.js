@@ -1,6 +1,6 @@
 /*
 master.js - Creating a personality quiz using arrays, JS libraries, and a bunch of other stuff
-Author(s): Kevin Hong, Jess Brass, Juliet Montel, Michelle Wang
+Author(s): Kevin Hong, Jess Brass, Michelle Wang, Juliet Montel
 Date: 22 November, 2023
 */
 
@@ -612,14 +612,16 @@ handleMouseEvents($("button"), "buttonHover", "buttonClick");
 // Apply the function to icons
 handleMouseEvents($(".icon"), "iconHover", "iconClick");
 
+handleMouseEvents($("#home-icon"), "iconHover")
+
 // Show the tutorial when tutorial button is clicked
-$("#tutorial-button").click(function () {
-    $("#tutorial-screen").removeClass("hide");
+$(".tutorial").click(function () {
+    $("#tutorial-screen").toggleClass("hide");
 });
 
 // Hide the tutorial when tutorial button is clicked
 $("#tutorial-exit").click(function () {
-    $("#tutorial-screen").addClass("hide");
+    $("#tutorial-screen").toggleClass("hide");
 });
 
 // Attach a click event handler to the element with the ID "play"
@@ -640,14 +642,6 @@ $("#play").click(function () {
     }, 700)
 });
 
-$("#setting-icon").hide()
-
-// Menu
-
-$("#menu-icon").click(function () {
-    $("#setting-icon").fadeToggle("slow");
-});
-
 // Function to play a sound
 function playSound(soundFile) {
     let sound = new Howl({
@@ -657,6 +651,12 @@ function playSound(soundFile) {
 
     sound.play();
 }
+
+// Menu
+
+$(".menu-button").click(function () {
+    $(".menu-bar").toggleClass("open");
+});
 
 // Particle effects for the background
 particlesJS('particles-js', {

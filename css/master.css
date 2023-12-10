@@ -2,6 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/ibm-selectric-manifold');
 @import url('https://fonts.cdnfonts.com/css/justy-three');
 @import url('https://fonts.cdnfonts.com/css/handwritten');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
 
 /* Align elements to the center */
 body {
@@ -50,7 +51,7 @@ body {
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1001; /* Ensure the tutorial box appears on top of the button */
+    z-index: 1003; /* Ensure the tutorial box appears on top of the button */
 }
 
 #tutorial-screen h2 {
@@ -262,16 +263,25 @@ button {
 
 /* Changes appearance of only the tutorial button */
 
-#tutorial-button {
-    width: 421px;
-    height: 125px;
-    margin: 0 auto;
+.tutorial {
     background-image: url(../img/tutorial.png);
     background-size: contain;
     background-repeat: no-repeat;
     filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1000;
+}
+
+#tutorial-button1 {
+    width: 421px;
+    height: 125px;
+    margin: 0 auto;
+}
+
+#tutorial-button2 {
+    position: fixed;
+    width: 300px;
+    height: 98px;
 }
 
 /* Changes appearance of button when mouse hovers over it */
@@ -287,42 +297,59 @@ button {
     user-select: none;
 }
 
-/* Settings Appearance */
+/* Menu Appearance */
 
-/* Positions setting icon to the bottom right */
-#menu div.icon {
-    cursor: pointer;
-    text-align: center;
-    padding: 5px;
-    transition: all 0.3s ease;
-}
-
-#menu-icon {
+.menu,
+.menu-bar {
     position: fixed;
     bottom: 3vh;
-    right: 3vh;
+    right: 4vh;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+}
+
+.menu li a .menu-icon {
     width: 296px;
     height: 108px;
     background-image: url(../img/menu.png);
     background-size: contain;
     background-repeat: no-repeat;
+    transition: background 0.1s ease-in-out;
     filter: drop-shadow(1px 1px 3px #49466e);
-    transition: transform .1s ease-in-out;
-    z-index: 1002;
+}
+
+.menu-bar {
+    overflow: hidden;
+    z-index: 5;
+    height: 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.menu-bar li a {
+    display: block;
+    color: #72739f;
+    text-decoration: none;
+    position: relative;
+    transition: background 0.1s ease-in-out;
 }
 
 #setting-icon {
-    position: fixed;
-    bottom: 15vh;
-    right: 4vh;
     width: 300px;
     height: 98px;
-    background-image: url(../img/settings.png);
+    background-image: url('../img/settings.png');
     background-size: contain;
     background-repeat: no-repeat;
     filter: drop-shadow(1px 1px 3px #49466e);
-    transition: transform .1s ease-in-out;
-    z-index: 1001;
+}
+  
+.open {
+    bottom: 23vh;
+    right: 4vh;
+    width: 300px;
+    height: 98px;
+    overflow: visible;
 }
 
 .iconHover {

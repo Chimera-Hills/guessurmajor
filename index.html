@@ -15,8 +15,6 @@
 
 	<!-- load jQuery library to make javascript easier (must be above our lab js) -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-	<!-- load minimal jQuery dropdown plugin for handling the menu -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dropdown/2.0.3/jquery.dropdown.min.js"></script>
 	
 	<!-- Importing JS Libraries -->
 	<!-- For handling particle effects in the background || Credits to https://vincentgarreau.com/particles.js/ -->
@@ -88,13 +86,28 @@
 				<!-- Placeholder Title -->
 				<h1 id="main-title"></h1> 
 				<div id="play" class="icon" aria-hidden="true"></div>
-				<div id="tutorial-button" class="icon" aria-hidden="true"></div>
+				<div id="tutorial-button1" class="icon tutorial" aria-hidden="true"></div>
 			</div>
-			<div id="menu">
-				<!-- Placeholder Settings Icon -->
-				<div id="menu-icon" class="icon" aria-hidden="true"></div>
-				<div id="setting-icon" class="icon" aria-hidden="true"></div>
-			</div>
+			<!-- Credits to https://codepen.io/ramzs/pen/QNqmyZ/ for menu -->
+			<ul class="menu">
+				<li title="home">
+					<a href="#" class="menu-button home">
+						<div class="menu-icon" id="home-icon" aria-hidden="true"></div>
+					</a>
+				</li>
+			</ul>
+			<ul class="menu-bar">
+				<li>
+					<a href="#">
+						<div class="menu-icon icon" id="setting-icon" aria-hidden="true"></div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="menu-icon tutorial icon" id="tutorial-button2" aria-hidden="true"></div>
+					</a>
+				</li>
+			</ul>
 		</section>
 	</main>
 </body>
