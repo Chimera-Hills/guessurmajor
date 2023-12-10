@@ -415,7 +415,7 @@ function setResults() {
 
             // Check if the percentage is 100 and set it to 90%
             if (percentage === 100) {
-                percentage = 95;
+                percentage = 99.9;
             }
             
             move("percentBar" + (i + 1), percentage);
