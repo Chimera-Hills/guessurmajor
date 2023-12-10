@@ -405,7 +405,6 @@ function displayResults(personality) {
     try {
         console.log(tempStats);
         console.log(userStats);
-        console.log(resultArray[highestStatPosition]);
         setTimeout(function () {
             results.removeClass("hide");
             playSound(RESULT_SOUND);
