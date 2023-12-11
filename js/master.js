@@ -580,22 +580,6 @@ const loadingScreen = function () {
 try { // Use jQuery to execute the loadingScreen function when the document is ready
     $(document).ready(function() {
         loadingScreen();
-
-        // Function to play background music
-        function playMusic(audioFile) {
-            // Create an <audio> element
-            var audio = new Audio(audioFile);
-            
-            // Set attributes
-            audio.volume = 1;       // Adjust the volume as needed
-            audio.loop = true;      // Enable looping
-            audio.autoplay = true;  // Autoplay the audio
-            
-            // Append the <audio> element to the body (or any other container)
-            $("body").append(audio);
-        }
-
-        playMusic(BG_SOUND);
     }); // Call the loading screen function
 } catch (error) { // Handle any exceptions that may occur during execution
     handleException(error);
@@ -680,6 +664,7 @@ $("#settings-exit").click(function () {
 $("#play").click(function () {
     // Show loading screen
     loadingScreen();
+    playMusic(BG_SOUND);
     setTimeout(function () { // Set a timeout to delay the execution of the following code
         // Hide the landing page and show the questions screen
         $("#questions-screen").removeClass("hide");
@@ -694,6 +679,50 @@ $("#play").click(function () {
     }, 700)
 });
 
+// Restart the quiz
+function restartQuiz() {
+    // Reset question state and quiz activity status
+    questionState = 0;
+    quizActive = true;
+
+    // Reset user stats and temporary stats arrays
+    userStats = [0, 0, 0, 0, 0, 0, 0];
+    tempStats = [0, 0, 0, 0, 0, 0, 0];
+
+    // Hide results screen and show the questions screen
+    results.addClass("hide");
+    setTimeout(function() {
+        quiz.removeClass("hide");
+    }, 700);
+
+    // Reset progress bars
+    move("percentBar2", 0);
+    move("percentBar3", 0);
+    move("percentBar4", 0);
+    move("percentBar5", 0);
+
+    // Clear question and answer text
+    $("#questions").html("");
+    $("#answers").html("");
+
+    changeState();
+}
+
+
+// Add an event listener to the restart button
+$('#restart').on('click', function() {
+    if (!$("#landing-page").hasClass("hide")) {
+        return;
+    } else if (questionState === 1) {
+        return;
+    } else {
+        // Call the restartQuiz function when the button is clicked
+        loadingScreen();
+        restartQuiz();
+    }
+});
+
+
 // Function to play a sound
 function playSound(soundFile) {
     let sound = new Howl({
@@ -702,6 +731,55 @@ function playSound(soundFile) {
     });
 
     sound.play();
+}
+
+function playMusic(soundFile) {
+    let sound = new Howl({
+        src: [soundFile],
+        volume: 1,
+        autoplay: true,
+        loop: true,
+    });
+
+    sound.play();
+
+    // Get the volume slider element
+    var volumeIcon = $('#volumeIcon');
+    var volumeSlider = $('#volumeSlider');
+
+    // Set initial volume based on the slider value
+    sound.volume(volumeSlider.val());
+
+    // Update volume when the slider value changes
+    volumeSlider.on('input', function() {
+        var volumeValue = parseFloat(volumeSlider.val());
+        sound.volume(volumeValue);
+        updateVolumeIcon(volumeValue);
+    });
+
+    // Toggle mute on clicking the volume icon
+    volumeIcon.on('click', function() {
+        sound.mute(!sound.mute());
+        updateVolumeIcon(sound.mute() ? 0 : sound.volume());
+        toggleSliderState();
+    });
+
+    // Function to update the volume icon based on the current volume level
+    function updateVolumeIcon(volume) {
+    // Customize this part based on your image
+    if (volume === 0) {
+        volumeIcon.attr('src', './img/volume-muted.png');
+    } else if (volume <= 0.5) {
+        volumeIcon.attr('src', './img/volume-low.png');
+    } else {
+        volumeIcon.attr('src', './img/volume.png');
+    }
+    }
+
+    // Function to toggle the state of the volume slider
+    function toggleSliderState() {
+        volumeSlider.prop('disabled', sound.mute());
+    }   
 }
 
 // Menu

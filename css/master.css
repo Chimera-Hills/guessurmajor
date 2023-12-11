@@ -64,6 +64,14 @@ body {
     font-family: 'Justy Three', sans-serif;
     font-size: 1.10em;
     text-indent: 5px;
+    margin-block-end: 1px;
+}
+
+#settings-screen button {
+    font-size: 1.5em;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    width: 50%
 }
 
 #settings-exit {
@@ -443,4 +451,35 @@ button {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+#volumeIcon {
+    width: 7.5%;
+    margin-right: 1em;
+    margin-bottom: -0.25em;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #volumeSlider {
+        overflow: hidden;
+        width: 75%;
+        -webkit-appearance: none;
+        background-color: #CBC0D3;
+    }
+    
+    #volumeSlider::-webkit-slider-runnable-track {
+        height: 10px;
+        -webkit-appearance: none;
+        margin-top: -1px;
+    }
+    
+    #volumeSlider::-webkit-slider-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        background: #8E9AAF;
+        box-shadow: -1000px 0 0 1000px #DEE2FF;
+    }
+
 }
