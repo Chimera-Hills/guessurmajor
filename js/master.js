@@ -581,24 +581,18 @@ try { // Use jQuery to execute the loadingScreen function when the document is r
     $(document).ready(function() {
         loadingScreen();
 
-        // Function to loop a sound
-        function playMusic(soundFile) {
-            let sound = new Howl({
-                src: [soundFile],
-                volume: 1,
-                loop: true,
-                autoplay: false, // Disable autoplay initially
-            });
-
-            // Play the audio on hover
-            $('#bg-music').on('mouseenter', function() {
-                sound.play();
-            });
-
-            // Pause the audio when the mouse leaves the element
-            $('#bg-music').on('mouseleave', function() {
-                sound.pause();
-            });
+        // Function to play background music
+        function playMusic(audioFile) {
+            // Create an <audio> element
+            var audio = new Audio(audioFile);
+            
+            // Set attributes
+            audio.volume = 1;       // Adjust the volume as needed
+            audio.loop = true;      // Enable looping
+            audio.autoplay = true;  // Autoplay the audio
+            
+            // Append the <audio> element to the body (or any other container)
+            $("body").append(audio);
         }
 
         playMusic(BG_SOUND);
