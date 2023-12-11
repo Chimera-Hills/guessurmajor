@@ -1,3 +1,8 @@
+/* Fontstyles for styling */
+@import url('https://fonts.cdnfonts.com/css/ibm-selectric-manifold');
+@import url('https://fonts.cdnfonts.com/css/justy-three');
+@import url('https://fonts.cdnfonts.com/css/handwritten');
+
 /* Align elements to the center */
 body {
     display: flex;
@@ -5,58 +10,91 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-image: url(https://images4.alphacoders.com/132/1327987.png); /*Image Credit: Google*/
-    background-size: cover;
-    /* background-color: #DEE2FF; */
-    overflow: hidden; /* Prevents the radial gradient from overflowing */
+    overflow: hidden;
+    user-select: none;
+    background: url(https://images4.alphacoders.com/132/1327987.png) center/cover no-repeat; /*Image Credit: Google*/
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    user-select: none;
 }
 
 #content section {
-    text-align: center;
     position: relative;
+    text-align: center;
 }
 
 #main-title {
-    position: relative;
-    width: 615px;
-    height: 381px;
-    bottom: 100px;
-    background-image: url(../img/main-title.png);
-    background-size: contain;
+    width: 597px;
+    height: 362px;
+    margin-bottom: 10%;
+    background: url(../img/main-title.png) center/contain no-repeat;
     transition: transform .1s ease-in-out;
     z-index: 1000;
+    filter: drop-shadow(1px 1px 3px #49466e);
 }
 
-#tutorial-screen {
-    position: absolute;
-    top: -200px;
-    color: #495057;
-    background-color: #f1faeef5;
-    border: solid 3px #CBC0D3;
-    padding: 25px;
-    border-radius: 1em;
-    font-size: 1.5em;
-    transition: all 0.3s ease;
-}
-
-#tutorial-screen {
-    position: absolute;
+#settings-screen {
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 30%;
     transform: translate(-50%, -50%);
     color: #495057;
     background-color: #e7e6f7;
     border: solid 3px #CBC0D3;
+    box-shadow: 1px 1px 3px #49466e;
     padding: 25px;
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1001; /* Ensure the tutorial box appears on top of the button */
-    width: 100%;
+    z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
+}
+
+
+#settings-screen h2 {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 2em;
+}
+
+#settings-screen p {
+    font-family: 'Justy Three', sans-serif;
+    font-size: 1.10em;
+    text-indent: 5px;
+}
+
+#settings-exit {
+    cursor: pointer;
+    position: fixed;
+    top: 2.5%;
+    right: 5%;
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 2em;
+    user-select: none;
+}
+
+#tutorial-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    transform: translate(-50%, -50%);
+    color: #495057;
+    background-color: #f1faeef5;
+    border: solid 3px #CBC0D3;
+    box-shadow: 1px 1px 3px #49466e;
+    padding: 25px;
+    border-radius: 1em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
 }
 
 #tutorial-screen h2 {
-    font-family: 'Avocade Bold', sans-serif;
+    font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 2em;
 }
 #tutorial-screen p {
@@ -67,18 +105,19 @@ body {
 
 #tutorial-exit {
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 2.5%;
     right: 5%;
-    font-family: 'Avocade Bold', sans-serif;
+    font-family: 'IBM Selectric Manifold', sans-serif;
     font-size: 2em;
     user-select: none;
 }
 
 #questions-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 60%;
     transform: translate(-50%, -50%);
     color: #495057;
     border: solid 2px #4a4e69;
@@ -86,15 +125,18 @@ body {
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1001; /* Ensure the tutorial box appears on top of the button */
-    width: 200%; /* Adjusted the width to 60% of the viewport width */
-    background: rgba(255, 255, 255, 0.8)
+    z-index: 1001; /* Ensure the questions box appears on top of the button */
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 3px #49466e;
+    user-select: none;
+    
 }
 
 #questions-screen h2 {
-    font-family: 'Avocade Bold', sans-serif;
-    font-size: 1.5em; /* Increased the font size */
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 1.75em;
     margin-bottom: 20px; /* Added margin at the bottom for spacing */
+    text-shadow: 1px 1px 2px #998ca3;
 }
 
 #questions-screen ul {
@@ -103,20 +145,38 @@ body {
     max-width: 100%; /* Ensure the list doesn't expand outside the bounds */
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#questions-screen li {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage as needed */
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    #questions-screen li {
+        flex: 0 0 calc(100% - 20px);
+    }
 }
 
 #questions-screen button {
     font-size: 1.5em; /* Increased the font size */
-    padding: 10px; /* Adjusted padding for better spacing */
+    padding: 5px; /* Adjusted padding for better spacing */
     width: 50%; /* Adjusted the width to 50% of the container */
-    margin: 10px; /* Added margin for spacing between buttons */
+    margin: 5px; /* Added margin for spacing between buttons */
     line-height: 1.5em; /* Adjusted line height for better spacing */
+    min-width: 75%; /* Set a minimum width for the button */
+
 }
 
 #results-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
+    width: 50%;
     transform: translate(-50%, -50%);
     color: #495057;
     border: solid 2px #4a4e69;
@@ -124,9 +184,92 @@ body {
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s ease;
-    z-index: 1001;
-    width: 200%; /* Adjusted the width to 60% of the viewport width */
-    background: rgba(255, 255, 255, 0.8)
+    z-index: 1005;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 3px #49466e;
+    user-select: none;
+}
+
+#results-screen h2 {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-size: 1.75em;
+    margin-bottom: 20px; /* Added margin at the bottom for spacing */
+    text-shadow: 1px 1px 2px #998ca3;
+}
+
+#results-screen p {
+    font-family: 'Handwritten', sans-serif;
+    font-size: 1em;
+    width: 65%;
+    margin-left: 1%;
+    text-shadow: 1px 1px 2px #998ca3;
+}
+
+.align-right {
+    float: right;
+}
+
+#results-screen img {
+    margin: 1%;
+    height: auto;
+    user-select: none;
+    transition: transform .5s ease-in-out;
+    filter: drop-shadow(1px 1px 3px #998ca3);
+}
+
+#other-results {
+    margin-left: 5%;
+    width: 55%;
+    z-index: 1006; /* Adjust the z-index as needed */
+}
+
+#other-results h3 {
+    padding: .75%;
+    margin-block-end: .5em;
+    color: white;
+    background-color: #8e9aafcc;
+    border: solid 1px #4a4e69;
+    border-radius: .5em;
+    font-family: 'IBM Selectric Manifold', sans-serif;
+}
+
+#percentage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#percentage-list span {
+    font-family: 'IBM Selectric Manifold', sans-serif;
+    font-weight: bold;
+}
+
+.percentFont {
+    font-family: 'Handwritten', sans-serif;
+    text-shadow: 0px 0px 2px #a190ad;
+}
+
+#percentage-list li {
+    font-size: 1em; /* Adjust as needed */
+    margin-bottom: .5em; /* Adjust as needed */
+}
+
+.progressBar {
+    width: 100%;
+    margin-left: 1%;
+    border-radius: 1em;
+    border: solid 1px #c4b8cc;
+    background-color: #cbc0d3cc;
+    box-shadow: inset 1px 2px 5px #998ca3;
+    overflow: hidden;
+  }
+  
+.progressBar div {
+    width: 1%;
+    height: 30px;
+    border-radius: .15em;
+    box-shadow: 2px 0px 5px #998ca3;
+    background: linear-gradient(to right, #FEEAFA, #DEE2FF);
 }
 
 /* Button Appearance */
@@ -140,99 +283,126 @@ button {
     color: #495057;
     background-color: #e7e6f7;
     border: solid 2px #4a4e69;
-    box-shadow: 1px 2px 5px #1D3557;
+    box-shadow: 1px 2px 5px #49466e;
 }
 
 /* Changes appearance of only the play button */
 #play {
-    width: 250px;
-    height: 56px;
-    position: fixed;
-    bottom: 25vh;
-    left: 92vh;
+    width: 355px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 1em;
     background-image: url(../img/play.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1000;
 }
 
 /* Changes appearance of only the tutorial button */
 
-#tutorial-button {
-    width: 295px;
-    height: 88px;
-    position: fixed;
-    bottom: 10vh;
-    left: 89.3vh;
+.tutorial {
     background-image: url(../img/tutorial.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
+    filter: drop-shadow(1px 1px 3px #49466e);
     transition: transform .1s ease-in-out;
     z-index: 1000;
 }
 
+#tutorial-button1 {
+    width: 421px;
+    height: 125px;
+    margin: 0 auto;
+}
+
+#tutorial-button2 {
+    position: fixed;
+    width: 300px;
+    height: 98px;
+    z-index: 1004;
+}
+
 /* Changes appearance of button when mouse hovers over it */
 .buttonHover {
-    text-shadow: 1px 1px 2px #457B9D;
+    text-shadow: 1px 1px 2px #49466e;
     transform: scale(1.2);
 }
 
 /* Simulates pressing the button */
 .buttonClick {
-    text-shadow: inset 0px 0px 10px #1D3557;
+    text-shadow: inset 0px 0px 10px #49466e;
     transform: scale(1);
     user-select: none;
 }
 
-/* Settings Appearance */
+/* Menu Appearance */
 
-/* Positions setting icon to the bottom right */
-#menu div.icon {
-    cursor: pointer;
-    text-align: center;
-    padding: 5px;
-    transition: all 0.3s ease;
-}
-
-#menu-icon {
+.menu,
+.menu-bar {
     position: fixed;
     bottom: 3vh;
-    right: 3vh;
-    width: 200px;
-    height: 73px;
+    right: 4vh;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1004;
+}
+
+.menu li a .menu-icon {
+    width: 296px;
+    height: 108px;
     background-image: url(../img/menu.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
-    transition: transform .1s ease-in-out;
-    z-index: 1002;
+    transition: background 0.1s ease-in-out;
+    filter: drop-shadow(1px 1px 3px #49466e);
+}
+
+.menu-bar {
+    overflow: hidden;
+    z-index: 5;
+    height: 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.menu-bar li a {
+    display: block;
+    color: #72739f;
+    text-decoration: none;
+    position: relative;
+    transition: background 0.1s ease-in-out;
 }
 
 #setting-icon {
-    position: fixed;
-    bottom: 15vh;
-    right: 4vh;
-    width: 200px;
-    height: 65px;
-    background-image: url(../img/settings.png);
+    width: 300px;
+    height: 98px;
+    background-image: url('../img/settings.png');
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(1px 1px 3px #1D3557);
-    transition: transform .1s ease-in-out;
-    z-index: 1001;
+    filter: drop-shadow(1px 1px 3px #49466e);
+    z-index: 1004;
+}
+  
+.open {
+    bottom: 23vh;
+    right: 4vh;
+    width: 300px;
+    height: 98px;
+    overflow: visible;
+}
+
+.icon {
+    cursor: pointer;
 }
 
 .iconHover {
-    text-shadow: 1px 1px 2px #457B9D;
     transform: scale(1.2);
 }
 
 /* Simulates pressing the button */
 .iconClick {
-    text-shadow: inset 0px 0px 10px #1D3557;
     transform: scale(1);
     user-select: none;
 }
@@ -254,13 +424,13 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #1d3557cc;
-    z-index: 1005;
+    background: #6b788fc2;
+    z-index: 9999;
 }
 
 .loader {
-    border: 1em solid rgba(168, 218, 219, 0.5);
-    border-top: 1em solid #A8DADC;
+    border: 1em solid #dee2ffcb;
+    border-top: 1em solid #FEEAFA;
     border-radius: 50%;
     width: 5em;
     height: 5em;

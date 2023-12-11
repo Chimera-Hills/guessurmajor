@@ -13,29 +13,37 @@
 	<!-- Link a CSS file for consistent styling across the page -->
 	<link rel="stylesheet" type="text/css" href="css/master.css">
 
-	<!-- Link fontstyles for styling -->
-	<link href="https://fonts.cdnfonts.com/css/justy-three" rel="stylesheet">
-	<link href="https://fonts.cdnfonts.com/css/avocade" rel="stylesheet">
-
-	<!-- load jQuery library to make javascript easier (must be above our lab js)-->
+	<!-- load jQuery library to make javascript easier (must be above our lab js) -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	
+	<!-- Importing JS Libraries -->
+	<!-- For handling particle effects in the background || Credits to https://vincentgarreau.com/particles.js/ -->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<!-- For handling sound FX + music || Credits to https://howlerjs.com/ -->
+	<script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+	
 	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
 	<script type="text/javascript" src="js/master.js" DEFER></script>
 </head>
 <body>
+	<div id="particles-js"></div> <!-- Container for handling particles -->
 	<main id="content">
 		<section>
 			<div id="loading-screen">
 				<div class="loader"></div>
 			</div>
+			<div id="settings-screen" class="hide">
+				<h2>Settings</h2>
+				<div id="settings-exit" class="icon"> <span aria-hidden="true">&times;</span></div>
+			</div>
 			<div id="tutorial-screen" class="hide">
-				<h2>Tutorial</h2>
-				<div id="tutorial-exit" class="icon">X</div>
-				<p>Welcome to "Guess Ur Major" where you answer a series of questions and our AI will sort your answers and return you
-					what your assumed major is. Try your best to answer the questions truthfully so that the AI will be able to accurately
+				<h2>How To Play</h2>
+				<div id="tutorial-exit" class="icon"> <span aria-hidden="true">&times;</span></div>
+				<p>Welcome to "Guess Ur Major" where you answer a series of questions and our quiz will sort your answers and return you
+					what your assumed major is. Try your best to answer the questions truthfully so that the quiz will be able to accurately
 					guess your major.
-					<br><br>
-					The purpose of this game is to combat major stereotypes and show users the hidden bias of each
+				</p>
+				<p>The purpose of this game is to combat major stereotypes and show users the hidden bias of each
 					major. During our ideation process, this phenomenon of major stereotypes was one of the things that came up and we 
 					ended up deciding to base our project on it. By the end of the process, our project became a quiz game that guesses 
 					your major based on stereotypes that we have coded into the game.
@@ -45,25 +53,65 @@
 				<h2 id="questions"></h2>
 				<ul id="answers"></ul>
 			</div>
-			<div id="results-screen" class="hide">
+			<div id="results-screen" class="hide"> <!-- This comment was for debugging: class="hide" -->
 				<h2 id="top-score">Placeholder Major</h2>
+				<img id="character-image" class="align-right" />
 				<p id="score-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus felis et dignissim vestibulum. Aenean rutrum elementum urna vitae blandit. 
 					Donec eget porta massa. Duis aliquam mollis nunc at sagittis. Nam urna lorem, condimentum at odio vitae, vulputate pharetra metus. Aenean id 
-					facilisis eros. Nunc faucibus feugiat magna sit amet aliquet. Sed pellentesque, ligula non gravida placerat, odio nisi ornare lacus, non 
-					bibendum nunc massa eu risus. Vivamus finibus fringilla egestas. Vivamus feugiat luctus neque nec tempor. Cras tempus congue luctus. Praesent 
-					placerat urna erat, eget vulputate nisl gravida at. Nulla elit tellus, cursus a sodales et, pretium eu massa.</p>
+					facilisis eros. Nunc faucibus feugiat magna sit amet aliquet.
+				</p>
+				<div id="other-results">
+					<h3>Other close guesses...</h3>
+					<ul id="percentage-list">
+						<li><span id="percentMajor2">Placeholder Major</span>
+							<div class="progressBar">
+								<div id="percentBar2" class="percentFont">%</div>
+						  	</div>
+						</li>
+						<li><span id="percentMajor3">Placeholder Major</span>
+							<div class="progressBar">
+								<div id="percentBar3" class="percentFont">%</div>
+						  	</div>
+						</li>
+						<li><span id="percentMajor4">Placeholder Major</span>
+							<div class="progressBar">
+								<div id="percentBar4" class="percentFont">%</div>
+						  	</div>
+						</li>
+						<li><span id="percentMajor5">Placeholder Major</span>
+							<div class="progressBar">
+								<div id="percentBar5" class="percentFont">%</div>
+						  	</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div id="landing-page">
 				<!-- Placeholder Title -->
 				<h1 id="main-title"></h1> 
-				<div id="play" class="icon"></div>
-				<div id="tutorial-button" class="icon"></div>
+				<div id="play" class="icon" aria-hidden="true"></div>
+				<div id="tutorial-button1" class="icon tutorial" aria-hidden="true"></div>
 			</div>
-			<div id="menu">
-				<!-- Placeholder Settings Icon -->
-				<div id="menu-icon" class="icon"></div>
-				<div id="setting-icon" class="icon"></div>
-			</div>
+			<!-- Credits to https://codepen.io/ramzs/pen/QNqmyZ/ for menu -->
+			<ul class="menu">
+				<li title="home">
+					<a href="#" class="menu-button home">
+						<div class="menu-icon" id="home-icon" aria-hidden="true"></div>
+					</a>
+				</li>
+			</ul>
+			<ul class="menu-bar">
+				<li>
+					<a href="#">
+						<div class="menu-icon icon" id="setting-icon" aria-hidden="true"></div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="menu-icon tutorial icon" id="tutorial-button2" aria-hidden="true"></div>
+					</a>
+				</li>
+			</ul>
 		</section>
 	</main>
 </body>
