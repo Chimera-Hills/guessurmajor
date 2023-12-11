@@ -160,9 +160,9 @@ const answerValues = [
     [ // q1 values
         [ 0, 0, 3, 2, 1, 0, 0 ], // red
         [ 3, 2, 1, 0, 0, 0, 0 ], // orange
-        [ 2, 3, 0, 0, 0, 1, 1 ], // yellow
-        [ 0, 0, 0, 1, 2, 3, 2 ], // green
-        [ 1, 0, 0, 3, 0, 2, 0 ], // blue
+        [ 2, 3, 0, 0, 0, 0, 1 ], // yellow // biology 1
+        [ 0, 0, 0, 1, 2, 0, 2 ], // green // biology 3
+        [ 1, 0, 0, 3, 0, 0, 0 ], // blue // biology 2
         [ 0, 1, 2, 0, 3, 0, 2 ] // violet
     ],
     [ // q2 values
@@ -170,90 +170,90 @@ const answerValues = [
         [ 0, 1, 2, 0, 2, 0, 3 ], // Aquarius
         [ 0, 2, 3, 0, 1, 0, 1 ], // Pisces
         [ 3, 2, 0, 0, 1, 0, 0 ], // Aries
-        [ 0, 1, 0, 2, 0, 3, 0 ], // Taurus
+        [ 0, 1, 0, 2, 0, 0, 0 ], // Taurus // biology 3
         [ 2, 0, 1, 0, 3, 0, 2 ], // Gemini
         [ 3, 0, 2, 0, 1, 0, 2 ], // Cancer
         [ 1, 3, 0, 0, 2, 0, 0 ], // Leo
-        [ 0, 0, 0, 3, 1, 2, 1 ], // Virgo
+        [ 0, 0, 0, 3, 1, 0, 1 ], // Virgo // biology 2
         [ 3, 0, 1, 0, 2, 0, 2 ], // Libra
-        [ 2, 0, 3, 0, 0, 1, 1 ], // Scorpio
-        [ 1, 2, 0, 0, 0, 3, 0 ] // Sagittarius
+        [ 2, 0, 3, 0, 0, 0, 1 ], // Scorpio // biology 1
+        [ 1, 2, 0, 0, 0, 0, 0 ] // Sagittarius // biology 3
     ],
     [ // q3 values
         [ 0, 3, 2, 0, 1, 0, 1 ], // Spring
-        [ 0, 0, 3, 0, 2, 1, 0 ], // Summer
+        [ 0, 0, 3, 0, 2, 0, 0 ], // Summer // biology 1
         [ 3, 1, 2, 0, 0, 0, 2 ], // Autumn
-        [ 0, 1, 0, 3, 0, 2, 3] // Winter
+        [ 0, 1, 0, 3, 0, 0, 3] // Winter // biology 2
     ],
     [ // q4 values
-        [ 0, 3, 2, 0, 0, 1, 0 ], // photography
-        [ 2, 0, 1, 0, 0, 3, 2 ], // gardening
-        [ 1, 2, 0, 0, 0, 3, 1 ], // cooking
-        [ 3, 0, 0, 0, 2, 1, 2 ], // reading/writing
-        [ 0, 0, 0, 3, 1, 2, 0 ], // gaming
+        [ 0, 3, 2, 0, 0, 0, 0 ], // photography // biology 1
+        [ 2, 0, 1, 0, 0, 0, 2 ], // gardening // biology 3
+        [ 1, 2, 0, 0, 0, 0, 1 ], // cooking // biology 3
+        [ 3, 0, 0, 0, 2, 0, 2 ], // reading/writing // biology 1
+        [ 0, 0, 0, 3, 1, 0, 0 ], // gaming // biology 2
         [ 2, 0, 1, 0, 3, 0, 1 ], // singing
         [ 0, 1, 2, 0, 3, 0, 2 ], // dancing
-        [ 0, 0, 0, 2, 3, 1, 1 ], // listening to music
+        [ 0, 0, 0, 2, 3, 0, 1 ], // listening to music // biology 1
         [ 1, 0, 3, 0, 2, 0, 1 ], // drawing/painting
-        [ 0, 2, 0, 0, 1, 3, 0 ], // fishing
-        [ 0, 3, 1, 0, 0, 2, 2 ], // hiking
+        [ 0, 2, 0, 0, 1, 0, 0 ], // fishing // biology 3
+        [ 0, 3, 1, 0, 0, 0, 2 ], // hiking // biology 2
         [ 0, 2, 0, 0, 1, 0, 3 ] // sports
     ],
     [ // q5 values
-        [ 3, 1, 0, 0, 0, 2, 1 ], // black, iced
-        [ 1, 2, 0, 0, 0, 3, 2 ], // black, hot
+        [ 3, 1, 0, 0, 0, 0, 1 ], // black, iced // biology 2
+        [ 1, 2, 0, 0, 0, 0, 2 ], // black, hot // biology 3
         [ 0, 0, 2, 1, 3, 0, 0 ], // milky, iced
         [ 0, 0, 3, 2, 1, 0, 1 ], // milky, hot
     ],
     [ // q6 values
-        [ 3, 0, 2, 0, 0, 1, 0 ], // plain
+        [ 3, 0, 2, 0, 0, 0, 0 ], // plain // biology 1
         [ 0, 0, 3, 1, 2, 0, 1 ], // blueberry
-        [ 2, 3, 0, 0, 0, 1, 0 ], // onion
+        [ 2, 3, 0, 0, 0, 0, 0 ], // onion // biology 1
         [ 0, 0, 2, 1, 3, 0, 2 ], // poppyseed
         [ 0, 2, 0, 3, 1, 0, 1 ], // garlic
-        [ 0, 0, 1, 0, 2, 3, 2 ], // sesame
-        [ 1, 0, 0, 3, 0, 2, 0 ], // chocolate chip
+        [ 0, 0, 1, 0, 2, 0, 2 ], // sesame // biology 3
+        [ 1, 0, 0, 3, 0, 0, 0 ], // chocolate chip // biology 2
         [ 0, 1, 3, 2, 0, 0, 1 ] // sourdough
     ],
     [ //q7 values
-        [ 1, 0, 2, 0, 1, 3, 0 ], // physical planner
+        [ 1, 0, 2, 0, 1, 0, 0 ], // physical planner // biology 3
         [ 2, 0, 3, 0, 1, 0, 2 ], // calendar on the wall
         [ 2, 3, 0, 0, 1, 0, 2 ], // sticky notes
-        [ 0, 2, 0, 3, 1, 1, 0 ], // virtual planner/calendar
+        [ 0, 2, 0, 3, 1, 0, 0 ], // virtual planner/calendar // biology 1
         [ 3, 1, 2, 0, 0, 0, 2 ], // bullet journal
         [ 2, 3, 0, 0, 1, 0, 2 ], // the notes app
         [ 0, 1, 0, 3, 0, 0, 2 ], // my brain
-        [ 0, 2, 0, 0, 0, 1, 3 ] // all of the above
+        [ 0, 2, 0, 0, 0, 0, 3 ] // all of the above // biology 1
 
     ],
     [ //q8 values 
-        [ 3, 0, 2, 0, 1, 3, 3 ], // read a book
+        [ 3, 0, 2, 0, 1, 0, 3 ], // read a book // biology 3
         [ 0, 3, 1, 3, 2, 0, 0 ], // watch a movie
     ],
     [ //q9 values
         [ 3, 2, 3, 0, 1, 0, 2 ], // start right away
-        [ 0, 1, 0, 3, 2, 3, 1 ], // wait until deadline
+        [ 0, 1, 0, 3, 2, 0, 1 ], // wait until deadline // biology 3
     ],
     [ //q10 values
-        [ 0, 3, 2, 0, 1, 1, 0 ], // family vacations
+        [ 0, 3, 2, 0, 1, 0, 0 ], // family vacations // biology 1
         [ 2, 0, 0, 2, 3, 0, 0 ], // birthday celebrations
-        [ 0, 1, 3, 1, 2, 3, 1 ], // field trips
+        [ 0, 1, 3, 1, 2, 0, 1 ], // field trips // biology 3
         [ 1, 0, 0, 3, 2, 0, 1 ], // playing with friends
         [ 1, 0, 1, 0, 3, 0, 1 ], // special holidays
-        [ 3, 2, 0, 2, 1, 2, 0 ], // learning new skills
+        [ 3, 2, 0, 2, 1, 0, 0 ], // learning new skills // biology 2
         [ 2, 0, 1, 0, 3, 0, 3 ], // family gatherings
-        [ 0, 3, 0, 0, 0, 3, 2 ] // camping adventures
+        [ 0, 3, 0, 0, 0, 0, 2 ] // camping adventures // biology 3
     ],
     [ //q11 values
         [ 3, 2, 3, 0, 0, 0, 3 ], // morning person
-        [ 0, 1, 0, 3, 3, 3, 0 ] // night owl
+        [ 0, 1, 0, 3, 3, 0, 0 ] // night owl // biology 3
     ],
     [ //q12 values
-        [ 3, 2, 3, 1, 0, 3, 0 ], // highly organized
+        [ 3, 2, 3, 1, 0, 0, 0 ], // highly organized // biology 3
         [ 2, 3, 0, 2, 0, 0, 1 ], // moderately organized
-        [ 1, 2, 2, 3, 1, 1, 2 ], // balanced mix of both
+        [ 1, 2, 2, 3, 1, 0, 2 ], // balanced mix of both // biology 1
         [ 0, 1, 0, 2, 2, 0, 3 ], // somewhat flexible
-        [ 0, 0, 1, 1, 3, 3, 2 ] // highly flexible
+        [ 0, 0, 1, 1, 3, 0, 2 ] // highly flexible // biology 3
     ],
 ]
 
