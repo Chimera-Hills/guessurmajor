@@ -11,6 +11,7 @@ Date: 22 November, 2023
 // Define sound file paths as constants
 const CLICK_SOUND = 'sounds/click.mp3';
 const RESULT_SOUND = 'sounds/result.mp3';
+const BG_SOUND = 'sounds/lofi-music.mp3';
 
 let questionState = 0;	// Keeps track of user's place in quiz
 let quizActive = true;	// True until last question is answered
@@ -469,6 +470,10 @@ function displayResults(personality) {
                 
             case 2:	// Art History Major
                 printResult.text(`You are an ${resultArray[2].major}!`);
+                characterImage.attr("src", "./img/artHist-asset.png").css({
+                    "width": "19.5%",
+                    "margin-right": "9%"
+                });
                 printDesc.text(`${resultArray[2].desc}`);
                 break;
                 
@@ -497,6 +502,10 @@ function displayResults(personality) {
             
             case 6: // Psychology Major
                 printResult.text(`You are a ${resultArray[6].major}!`);
+                characterImage.attr("src", "./img/psych-asset.png").css({
+                    "width": "20%",
+                    "margin-right": "7.5%"
+                });
                 printDesc.text(`${resultArray[6].desc}`);
                 break;
 
@@ -569,7 +578,27 @@ const loadingScreen = function () {
 
 // Execute the loading screen function when the document is ready
 try { // Use jQuery to execute the loadingScreen function when the document is ready
-    $(document).ready(loadingScreen); // Call the loading screen function
+    $(document).ready(function() {
+        loadingScreen();
+
+        // Function to loop a sound
+        function playMusic(soundFile) {
+            let sound = new Howl({
+                src: [soundFile],
+                volume: 1,
+                loop: true,
+                autoplay: true, // Autoplay is true, but the browser may require muting
+                mute: true,    // Mute the audio by default
+            });
+
+            // Unmute the audio after a delay (e.g., 1000 milliseconds = 1 second)
+            setTimeout(function() {
+                sound.unmute();
+            }, 1000);
+        }
+
+        playMusic(BG_SOUND);
+    }); // Call the loading screen function
 } catch (error) { // Handle any exceptions that may occur during execution
     handleException(error);
 }
