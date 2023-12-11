@@ -587,14 +587,18 @@ try { // Use jQuery to execute the loadingScreen function when the document is r
                 src: [soundFile],
                 volume: 1,
                 loop: true,
-                autoplay: true, // Autoplay is true, but the browser may require muting
-                mute: true,    // Mute the audio by default
+                autoplay: false, // Disable autoplay initially
             });
 
-            // Unmute the audio after a delay (e.g., 1000 milliseconds = 1 second)
-            setTimeout(function() {
-                sound.unmute();
-            }, 1000);
+            // Play the audio on hover
+            $('#bg-music').on('mouseenter', function() {
+                sound.play();
+            });
+
+            // Pause the audio when the mouse leaves the element
+            $('#bg-music').on('mouseleave', function() {
+                sound.pause();
+            });
         }
 
         playMusic(BG_SOUND);
