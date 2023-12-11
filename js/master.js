@@ -718,6 +718,7 @@ $('#restart').on('click', function() {
     } else {
         // Call the restartQuiz function when the button is clicked
         loadingScreen();
+        $("#settings-screen").toggleClass("hide");
         restartQuiz();
     }
 });
