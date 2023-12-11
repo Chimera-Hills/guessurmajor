@@ -52,6 +52,7 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
+    background: rgba(255, 255, 255, 0.9)
 }
 
 
@@ -83,7 +84,6 @@ body {
     width: 30%;
     transform: translate(-50%, -50%);
     color: #495057;
-    background-color: #f1faeef5;
     border: solid 3px #CBC0D3;
     box-shadow: 1px 1px 3px #49466e;
     padding: 25px;
@@ -91,6 +91,7 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1006;; /* Ensure the tutorial box appears on top of the button */
+    background: rgba(255, 255, 255, 0.9)
 }
 
 #tutorial-screen h2 {
@@ -126,7 +127,7 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1001; /* Ensure the questions box appears on top of the button */
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 1px 1px 3px #49466e;
     user-select: none;
     
@@ -185,7 +186,7 @@ body {
     font-size: 1.5em;
     transition: all 0.3s ease;
     z-index: 1005;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 1px 1px 3px #49466e;
     user-select: none;
 }
