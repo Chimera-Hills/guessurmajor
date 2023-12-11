@@ -386,11 +386,14 @@ button {
 }
   
 .open {
-    bottom: 23vh;
-    right: 4vh;
-    width: 300px;
-    height: 98px;
+    height: 30vh;
     overflow: visible;
+}
+
+@media all and (max-height: 53em) {
+    .open{
+        height: 35%;
+    }
 }
 
 .icon {
